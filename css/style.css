@@ -37,6 +37,7 @@
 	background-color: cadetblue;
 	background-size: cover;
 	background-position: center;
+	background-image: url('../img/background1.jpg');
 }
 
 .booking-form {
