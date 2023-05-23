@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
-  <link rel="stylesheet" href="http://localhost/MyProject1/css/stylesForAboutUs.css">
+  <link rel="stylesheet" href="http://localhost/Flight-Booking-System/css/stylesForAboutUs.css">
 </head>
 
 <body>
@@ -43,7 +43,7 @@
     </div>
   </section>
 
-  <script src="http://localhost/MyProject1/javascript/eventListeners.js"></script>
+  <script src="http://localhost/Flight-Booking-System/javascript/eventListeners.js"></script>
 </body>
 
 </html>

@@ -20,6 +20,6 @@
         Still in construction. 
     </p>
     
-<script src="http://localhost/MyProject1/javascript/eventListeners.js"></script>     
+<script src="http://localhost/Flight-Booking-System/javascript/eventListeners.js"></script>     
 </body>
 </html>

@@ -63,5 +63,5 @@
       <a id="packages-btn" href="packages" color="white">PACKAGES</a>
       <a id="aboutus-btn" href="aboutus" color="white">ABOUT US</a>
  </div>
- <script src="http://localhost/MyProject1/javascript/eventListeners.js"></script>
+ <script src="http://localhost/Flight-Booking-System/javascript/eventListeners.js"></script>
 </body>
