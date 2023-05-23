@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 loginButton.addEventListener('click', function(event){
     event.preventDefault(); // Prevent the default link behavior
     // Redirect to the desired page
-    window.location.assign('http://localhost/MyProject1/HTML/login.php');
+    window.location.assign('http://localhost/Flight-Booking-System/HTML/login.php');
 }); 
 
 
@@ -25,7 +25,7 @@ const packagesButton = document.getElementById('packages-btn');
 packagesButton.addEventListener('click', function(event){
     event.preventDefault(); // Prevent the default link behavior
     // Redirect to the desired page
-    window.location.assign('http://localhost/MyProject1/HTML/packages.php');
+    window.location.assign('http://localhost/Flight-Booking-System/HTML/packages.php');
 }); 
 
 
@@ -34,7 +34,7 @@ const aboutusButton = document.getElementById('aboutus-btn');
 aboutusButton.addEventListener('click', function(event){
    event.preventDefault(); // Prevent the default link behavior
   // Redirect to the desired page
-  window.location.assign('http://localhost/MyProject1/HTML/aboutUs.php');
+  window.location.assign('http://localhost/Flight-Booking-System/HTML/aboutUs.php');
 }); 
 
 
