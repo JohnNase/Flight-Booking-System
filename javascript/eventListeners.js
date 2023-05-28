@@ -38,14 +38,36 @@ aboutusButton.addEventListener('click', function(event){
 }); 
 
 
-// John's Event Listeners:
+// JOHN'S EVENT LISTENERS:
 
 // AVAILABLE FLIGHTS
-
+const availableflightsButton = document.getElementById('availableflights-btn');
+availableflightsButton.addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent the default link behavior
+  // Redirect to the desired page
+  window.location.assign('http://localhost/Flight-Booking-System/HTML/availableFlights.php');
+});
 
 // CONTACT US
+const contactusButton = document.getElementById('contactus-btn');
+contactusButton.addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent the default link behavior
+  // Redirect to the desired page
+  window.location.assign('http://localhost/Flight-Booking-System/HTML/contactUs.php');
+});
 
 // SIGNUP 
+
+const registerButton = document.getElementById("register-btn"); 
+registerButton.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    // Redirect to the desired page
+    window.location.assign('http://localhost/Flight-Booking-System/HTML/signup.php');
+}); 
+
+
+
+});
 
 
 
