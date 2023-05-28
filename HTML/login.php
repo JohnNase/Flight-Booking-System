@@ -11,7 +11,7 @@
 	?>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="HTML\validationLogIn.php" method="POST">
+        <form action=" http://localhost/Flight-Booking-System/HTML/authenticateLogin.php" method="POST">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
