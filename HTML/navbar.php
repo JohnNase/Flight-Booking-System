@@ -56,12 +56,12 @@
 </style>
 
 <div class="header">
-      <a id="login-btn" href="login" color="white">LOGIN</a>
-      <a id="register-btn" href="register" color="white">SIGN UP</a>
-      <a id="availableflights-btn" href="showavailabileflights" color="white">AVAILABLE FLIGHTS</a>
-      <a id="contactus-btn" href="contactus" color="white">CONTACT US</a>
-      <a id="packages-btn" href="packages" color="white">PACKAGES</a>
-      <a id="aboutus-btn" href="aboutus" color="white">ABOUT US</a>
+      <a id="login-btn" href="http://localhost/Flight-Booking-System/HTML/login.php" color="white">LOGIN</a>
+      <a id="register-btn" href="http://localhost/Flight-Booking-System/HTML/signup.php" color="white">SIGN UP</a>
+      <a id="availableflights-btn" href="http://localhost/Flight-Booking-System/HTML/availableflights.php" color="white">AVAILABLE FLIGHTS</a>
+      <a id="contactus-btn" href="http://localhost/Flight-Booking-System/HTML/contactus.php" color="white">CONTACT US</a>
+      <a id="packages-btn" href="http://localhost/Flight-Booking-System/HTML/packages.php" color="white">PACKAGES</a>
+      <a id="aboutus-btn" href="http://localhost/Flight-Booking-System/HTML/aboutus.php" color="white">ABOUT US</a>
  </div>
  <script src="http://localhost/Flight-Booking-System/javascript/eventListeners.js"></script>
 </body>
