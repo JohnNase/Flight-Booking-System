@@ -69,8 +69,4 @@ registerButton.addEventListener('click', function(event) {
 
 });
 
-
-
-
-
-});
+ 
