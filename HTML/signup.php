@@ -55,6 +55,9 @@ if (isset($_POST['signup'])) {
   <title>Sign Up</title> 
 </head>
 <body>
+<?php
+	include('navbar.php');  
+	?>
   <div class="container">
     <form action="register.php" method="POST">
       <h2>Sign Up</h2>
