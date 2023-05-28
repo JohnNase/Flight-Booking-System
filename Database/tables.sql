@@ -10,7 +10,7 @@ CREATE TABLE Packages (
 
 -- Create the Administrator table
 CREATE TABLE Administrator (
-    administrator_id INT PRIMARY KEY, 
+    administrator_id INT AUTO_INCREMENT PRIMARY KEY, 
     administrator_fullname VARCHAR(100),
     administrator_username VARCHAR(100),
     administrator_password VARCHAR(30)
@@ -51,7 +51,7 @@ CREATE TABLE Flight (
 
 -- Create the Passengers table
 CREATE TABLE Passengers (
-    passenger_id INT PRIMARY KEY,
+    passenger_id INT AUTO_INCREMENT PRIMARY KEY,
     passenger_fullname VARCHAR(100) NOT NULL,
     passenger_username VARCHAR(100) NOT NULL,
     passenger_email VARCHAR(100) NOT NULL,
