@@ -29,22 +29,6 @@
 				<div class="row">
 					<div class="booking-form">
 						<form>
-							<div class="form-group">
-								<div class="form-checkbox">
-									<label for="roundtrip">
-										<input type="radio" id="roundtrip" name="flight-type">
-										<span></span>Roundtrip
-									</label>
-									<label for="one-way">
-										<input type="radio" id="one-way" name="flight-type">
-										<span></span>One way
-									</label>
-									<label for="multi-city">
-										<input type="radio" id="multi-city" name="flight-type">
-										<span></span>Multi-City
-									</label>
-								</div>
-							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
