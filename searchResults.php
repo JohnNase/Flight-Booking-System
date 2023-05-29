@@ -65,7 +65,6 @@
 
   <div class="container">
     <?php
-      // Replace the database connection details with your own
       $servername = "localhost";
       $username = "root";
       $password = "";
