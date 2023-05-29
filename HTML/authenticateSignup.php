@@ -14,21 +14,23 @@ if (isset($_POST['signup'])) {
     $fullName = $_POST['full_name'];
     $username = $_POST['username'];
     $password = $_POST['password'];
-    
+    $email = $_POST['email'];
+    $phoneno = $_POST['phone'];
     $sendNotifications = isset($_POST['send_notifications']) ? 1 : 0;
 
     // Sanitize and validate the user input
     $fullName = $conn->real_escape_string($fullName);
     $username = $conn->real_escape_string($username);
     $password = $conn->real_escape_string($password);
-
+    $email =  $conn->real_escape_string($email);
+    $phoneno = $conn->real_escape_string($phoneno);
     // Perform any additional validation or checks if needed
 
     // Insert the user's data into the database
-    $sql = "INSERT INTO passengers (passenger_fullname, passenger_username, passenger_password,passenger_notifications) VALUES ('$fullName', '$username', '$password', $sendNotifications)";
+    $sql = "INSERT INTO passengers (passenger_fullname, passenger_username, passenger_email, passenger_password, passenger_phone, passenger_notifications) VALUES ('$fullName', '$username', '$email', '$password', '$phoneno', '$sendNotifications')";
     if ($conn->query($sql) === TRUE) {
         // User registered successfully, redirect to success page
-        header("Location: http://localhost/Flight-Booking-System/HTML/passenger_page.html");
+         header('Location: passenger_page.php');
         exit();
     } else {
         // Error occurred while inserting data, handle the error
