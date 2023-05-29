@@ -69,16 +69,13 @@
       $username = "root";
       $password = "";
       $dbname = "webproject";
-
-      // Create a new connection
+ 
       $conn = new mysqli($servername, $username, $password, $dbname);
-
-      // Check the connection
+ 
       if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
       }
-
-      // Retrieve flight data from the database
+ 
       $sql = "SELECT DISTINCT f.departure, f.destination, fd.flight_date, t.ticket_type, t.ticket_price, a.airline_name
       FROM Flight f
       JOIN FlightDate fd ON fd.Flight_No = f.flight_no
@@ -86,8 +83,7 @@
       JOIN Airline a ON a.airline_no = f.airline_no"; 
 
       $result = $conn->query($sql);
-
-      // Display flight items
+ 
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
           $airline_name = $row['airline_name']; 
@@ -108,13 +104,9 @@
         }
       } else {
         echo "No flights found.";
-      }
-
-      // Close the connection
+      } 
       $conn->close();
-    ?>
-
-    <!-- Additional flight items can be added here -->
+    ?> 
   </div>
 </body>
 </html>
