@@ -8,6 +8,7 @@
 // // 		<a id= "packages-btn" href="packages" color=white>PACKAGES</a> 
 // // 		<a id= "aboutus-btn" href="aboutus" color=white>ABOUT US</a>
 
+
 // Sara's Event Listeners:
 
 // LOGIN
@@ -65,6 +66,13 @@ registerButton.addEventListener('click', function(event) {
     window.location.assign('http://localhost/Flight-Booking-System/HTML/signup.php');
 }); 
 
+
+const homeButton = document.getElementById('home-btn');
+availableflightsButton.addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent the default link behavior
+  // Redirect to the desired page
+  window.location.assign('http://localhost/Flight-Booking-System/index.php');
+});
 
 
 });

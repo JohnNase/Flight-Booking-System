@@ -56,6 +56,7 @@
 </style>
 
 <div class="header">
+      <a id="home-btn" href="http://localhost/Flight-Booking-System/index.php" color="white">HOME</a>
       <a id="login-btn" href="http://localhost/Flight-Booking-System/HTML/login.php" color="white">LOGIN</a>
       <a id="register-btn" href="http://localhost/Flight-Booking-System/HTML/signup.php" color="white">SIGN UP</a>
       <a id="availableflights-btn" href="http://localhost/Flight-Booking-System/HTML/availableflights.php" color="white">AVAILABLE FLIGHTS</a>
