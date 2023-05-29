@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +16,12 @@
 
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 
+
+	<style>
+	.form-control {
+		color: white;
+	}
+</style>
 
 </head>
 
@@ -32,13 +39,13 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<span class="form-label">Flying from</span>
+										<span class="form-label" style="color: white;">Flying from</span>
 										<input class="form-control" type="text" placeholder="City or airport">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<span class="form-label">Flying to</span>
+										<span class="form-label" style="color: white;">Flying to</span>
 										<input class="form-control" type="text" placeholder="City or airport">
 									</div>
 								</div>
@@ -46,19 +53,19 @@
 							<div class="row">
 								<div class="col-md-3">
 									<div class="form-group">
-										<span class="form-label">Departing</span>
+										<span class="form-label" style="color: white;">Departing</span>
 										<input class="form-control" type="date" required>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
-										<span class="form-label">Returning</span>
+										<span class="form-label" style="color: white;">Returning</span>
 										<input class="form-control" type="date" required>
 									</div>
 								</div>
 								<div class="col-md-2">
 									<div class="form-group">
-										<span class="form-label">Adults (18+)</span>
+										<span class="form-label" style="color: white;">Adults (18+)</span>
 										<select class="form-control">
 											<option>1</option>
 											<option>2</option>
@@ -69,7 +76,7 @@
 								</div>
 								<div class="col-md-2">
 									<div class="form-group">
-										<span class="form-label">Children (0-17)</span>
+										<span class="form-label" style="color: white;" >Children (0-12)</span>
 										<select class="form-control">
 											<option>0</option>
 											<option>1</option>
@@ -82,7 +89,7 @@
 							<div class="row">
 								<div class="col-md-3">
 									<div class="form-group">
-										<span class="form-label">Travel class</span>
+										<span class="form-label" style="color: white;">Travel class</span>
 										<select class="form-control">
 											<option>Economy class</option>
 											<option>Business class</option>
@@ -93,7 +100,7 @@
 								</div>
 								<div class="col-md-3">
 									<div class="form-btn">
-										<button class="show-flights">Show flights</button>
+										<button class="show-flights" >Show flights</button>
 									</div>
 								</div>
 							</div>
@@ -103,6 +110,7 @@
 			</div>
 		</div>
 	</div>
+
 </body>
 
 </html>
