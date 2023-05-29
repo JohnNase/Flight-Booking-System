@@ -1,5 +1,5 @@
 <?php
-include('navbar.php');
+
 // Sample database connection
 $servername = "localhost";
 $username = "root";
@@ -35,8 +35,7 @@ $conn->close();
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Airline Ticket Memberships</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Airline Ticket Memberships</title> 
   <style>
     body {
   font-family: Arial, sans-serif;
@@ -108,6 +107,9 @@ footer {
 </style>
 </head>
 <body>
+<?php
+include('navbar.php'); 
+?>
   <header>
     <h1>Airline Ticket Memberships</h1>
   </header>
@@ -121,8 +123,9 @@ footer {
           $name = $membership['packages_name'];
           $price = $membership['packages_price'];
           $imageUrl = "http://localhost/Flight-Booking-System/img/" . strtolower(str_replace(" ", "-", $name)) . ".png";
+          $membershipUrl = "http://localhost/Flight-Booking-System/HTML/memberships/" . strtolower(str_replace(" ", "-", $name)) . ".php";
         ?>
-          <div class="membership-card">
+           <div class="membership-card" data-membership-url="<?php echo $membershipUrl; ?>">
             <div class="membership-image" style="background-image: url('<?php echo $imageUrl; ?>');"></div>
             <h2 class="membership-name"><?php echo $name; ?></h2>
             <p class="membership-price">$<?php echo $price; ?></p>
@@ -135,7 +138,17 @@ footer {
   </main>
 
   <footer>
-    <p>&copy; 2023 Your Company. All rights reserved.</p>
+    <p>&copy; 2023 Lorem ipsum Company. All rights reserved.</p>
   </footer>
+  <script>
+    // Add event listeners to membership cards
+    var membershipCards = document.querySelectorAll('.membership-card');
+    membershipCards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        var membershipUrl = card.getAttribute('data-membership-url');
+        window.location.href = membershipUrl;
+      });
+    });
+  </script>
 </body>
 </html>
