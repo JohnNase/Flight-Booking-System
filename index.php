@@ -105,22 +105,14 @@
 								<div class="col-md-2">
 									<div class="form-group">
 										<span class="form-label" style="color: white;">Adults (18+)</span>
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
+										<input type="text" id='adults' style="color: black;" class='form-control'>
 										<span class="select-arrow"></span>
 									</div>
 								</div>
 								<div class="col-md-2">
 									<div class="form-group">
 										<span class="form-label" style="color: white;" >Children (0-12)</span>
-										<select class="form-control">
-											<option>0</option>
-											<option>1</option>
-											<option>2</option>
-										</select>
+										<input type="text" id='children' style="color: black;" class='form-control'>
 										<span class="select-arrow"></span>
 									</div>
 								</div>
@@ -130,16 +122,54 @@
 									<div class="form-group">
 										<span class="form-label" style="color: white;">Travel class</span>
 										<select class="form-control">
-											<option>Economy class</option>
-											<option>Business class</option>
-											<option>First class</option>
+											<option style="color: black;">Economy class</option>
+											<option style="color: black;">Business class</option>
+											<option style="color: black;">First class</option>
 										</select>
 										<span class="select-arrow"></span>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-btn">
-										<button class="show-flights" >Show flights</button>
+									<button class="show-flights">Show flights</button>
+									<style>
+
+.show-flights {
+  background-color: #fff;
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  color: #0d172a;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 1rem 1.6rem;
+  text-align: center;
+  text-decoration: none #0d172a solid;
+  text-decoration-thickness: auto;
+  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.show-flights:hover {
+  background-color: #1e293b;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .show-flights {
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+  }
+}
+  
+									</style>
 									</div>
 								</div>
 							</div>

@@ -6,7 +6,7 @@
       }
       .header {
           overflow: hidden;
-          background-color: black;
+          background-color:#1e293b; 
           font-family: Arial, Helvetica, sans-serif;
           margin: 0;
           padding: 0;
@@ -21,8 +21,9 @@
       }
       .header a:hover,
       .header dropbtn {
-          background-color: rgb(255, 167, 251);
-          color: brown;
+          background-color: whitesmoke;
+          color: #1e293b;
+         
       }
 
       /* smaller view */
