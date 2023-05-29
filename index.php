@@ -1,4 +1,16 @@
+	<?php
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "webproject";
 
+	$conn = new mysqli($servername, $username, $password, $dbname);
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +38,14 @@
 </head>
 
 <body>
+	<?php
+	$sqlDepartures = "SELECT DISTINCT departure FROM flight";
+	$departures = $conn->query($sqlDepartures);
+
+	$sqlDestinations = "SELECT DISTINCT destination FROM flight";
+	$destination = $conn->query($sqlDestinations);
+	?>
+
 	<title>UserHome</title>
 	<?php
 	include 'HTML\navbar.php';
@@ -40,13 +60,32 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label" style="color: white;">Flying from</span>
-										<input class="form-control" type="text" placeholder="City or airport">
+										<select class="form-control" type="text" placeholder="City or airport" id="departure" onchange="populateDestinations()" style="color: black;">
+										<option style="color: gredarkslategray;" >Select a departure:</option>
+											<?php
+											if ($departures->num_rows > 0) {
+												while ($row = $departures->fetch_assoc()) {
+													echo "<option>" . $row['departure'] . "</option>";
+												}
+											}
+											?>
+										</select>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label" style="color: white;">Flying to</span>
-										<input class="form-control" type="text" placeholder="City or airport">
+										<select class="form-control" type="text" placeholder="City or airport" id="destination" onchange="populateDepartures()" style="color: black;">
+										 <option style="color: gredarkslategray;" >Select a departure:</option>
+											<?php
+				
+											if ($destination->num_rows > 0) {
+												while ($row = $destination->fetch_assoc()) {
+													echo "<option>" . $row['destination'] . "</option>";
+												}
+											}
+											?>
+										</select>
 									</div>
 								</div>
 							</div>
@@ -110,7 +149,7 @@
 			</div>
 		</div>
 	</div>
-
+	<script src="http://localhost/Flight-Booking-System/javascript/populateDepartures&Destinations.js"></script>
 </body>
 
 </html>
