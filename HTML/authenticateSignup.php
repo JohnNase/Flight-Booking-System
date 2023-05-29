@@ -14,6 +14,7 @@ if (isset($_POST['signup'])) {
     $fullName = $_POST['full_name'];
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $verify_password =  $_POST['verify-password'];
     $email = $_POST['email'];
     $phoneno = $_POST['phone'];
     $sendNotifications = isset($_POST['send_notifications']) ? 1 : 0;
@@ -26,7 +27,8 @@ if (isset($_POST['signup'])) {
     $phoneno = $conn->real_escape_string($phoneno);
     // Perform any additional validation or checks if needed
 
-    // Insert the user's data into the database
+    if($password == $verify_password){
+          // Insert the user's data into the database
     $sql = "INSERT INTO passengers (passenger_fullname, passenger_username, passenger_email, passenger_password, passenger_phone, passenger_notifications) VALUES ('$fullName', '$username', '$email', '$password', '$phoneno', '$sendNotifications')";
     if ($conn->query($sql) === TRUE) {
         // User registered successfully, redirect to success page
@@ -35,6 +37,12 @@ if (isset($_POST['signup'])) {
     } else {
         // Error occurred while inserting data, handle the error
         $error = "Error: " . $conn->error;
+        header("Location: signup.php?error=" . urlencode($error));
+        exit();
+    }
+    }
+    else{
+        $error = "Passwords don't match.";
         header("Location: signup.php?error=" . urlencode($error));
         exit();
     }
