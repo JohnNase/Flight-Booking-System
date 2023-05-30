@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flight Search Results</title>
+
   <style>
     /* CSS Styles for Flight Search Results */
     body {
@@ -58,7 +58,9 @@
   </style>
 </head>
 <body>
-
+<?php
+  include('navbar.php')
+  ?>
   <div class="header">
     <h1>Flight Search Results</h1>
   </div>
@@ -76,16 +78,40 @@
         die("Connection failed: " . $conn->connect_error);
       }
  
-      $sql = "SELECT DISTINCT f.departure, f.destination, fd.flight_date, t.ticket_type, t.ticket_price, a.airline_name
-      FROM Flight f
-      JOIN FlightDate fd ON fd.Flight_No = f.flight_no
-      JOIN Ticket t ON t.flight_no = f.flight_no
-      JOIN Airline a ON a.airline_no = f.airline_no"; 
+      // Retrieve form data
+      $departureDate = isset($_GET['departure_date']) ? date('Y-m-d', strtotime($_GET['departure_date'])) : '0000-00-00 00:00:00';
+      
+      $destination = $_GET['destination'];
+      $returnDate = isset($_GET['return_date']) ? date('Y-m-d', strtotime($_GET['return_date'])) : '9999-12-31 23:59:59';
+      $departure = $_GET['departure'];
+      $adults = $_GET['adults'];
+      $children = $_GET['children'];
+      $passengers_quantity = $adults+$children;
+      $travelClass = $_GET['travel_class'];
 
-      $result = $conn->query($sql);
+      // SQL query using the form data
+      $query = "SELECT DISTINCT f.departure, f.destination, fd.flight_date, t.ticket_type, t.ticket_price, a.airline_name
+            FROM Flight f
+            JOIN FlightDate fd ON fd.Flight_No = f.flight_no
+            JOIN Ticket t ON t.flight_no = f.flight_no
+            JOIN Airline a ON a.airline_no = f.airline_no
+            WHERE fd.flight_date >= '".$departureDate. " 00:00:00'AND fd.flight_date <= '".$returnDate. " 23:59:59'
+            AND t.ticket_class = '".$travelClass. "' AND f.departure = '".$departure. "' AND f.destination = '".$destination. "'";
+
+  // Prepare the statement
+  $stmt = $conn->prepare($query);
  
+$stmt->execute(); 
+      $result = $stmt->get_result();
+     
+$stmt->execute();
+if ($stmt->error) {
+  echo "Query Error: " . $stmt->error . "<br>";
+}
       if ($result->num_rows > 0) {
+
         while ($row = $result->fetch_assoc()) {
+
           $airline_name = $row['airline_name']; 
           $imageUrl = "http://localhost/Flight-Booking-System/img/" . strtolower(str_replace(" ", "-", $airline_name)) . "-logo.png";
 
