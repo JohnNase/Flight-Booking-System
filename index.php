@@ -48,7 +48,7 @@
 
 	<title>UserHome</title>
 	<?php
-	include 'HTML\navbar.php';
+	include 'navbar.php';
 	?>
 	<div id="booking" class="section" style="margin-top: 0;">
 		<div class="section-center">
