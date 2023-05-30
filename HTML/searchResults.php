@@ -85,8 +85,7 @@
       $returnDate = isset($_GET['return_date']) ? date('Y-m-d', strtotime($_GET['return_date'])) : '9999-12-31 23:59:59';
       $departure = $_GET['departure'];
       $adults = $_GET['adults'];
-      $children = $_GET['children'];
-      $passengers_quantity = $adults+$children;
+      $children = $_GET['children']; 
       $travelClass = $_GET['travel_class'];
 
       // SQL query using the form data
