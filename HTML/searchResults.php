@@ -62,7 +62,7 @@
   include('navbar.php')
   ?>
   <div class="header">
-    <h1>Flight Search Results</h1>
+    
   </div>
 
   <div class="container">
@@ -122,8 +122,45 @@ if ($stmt->error) {
           echo '<p>Date: ' . $row["flight_date"] . '</p>';
           echo '<p>Ticket Type: ' . $row["ticket_type"] . '</p>';
           echo '</div>';
-          echo '<div class="flight-price">  $' . $row["ticket_price"] . '</div>';
-          echo '<div class="flight-airline">' . $row["airline_name"] . '</div>';
+          echo '<div class="flight-price">  $' . $row["ticket_price"] .  '&nbsp</div>';
+          // echo '<div class="flight-airline">' . $row["airline_name"] . '</div>';
+          echo '<br>';
+          echo '<button class="buy-button">Buy Ticket</button> <style>
+          .buy-button {
+            background-color: #d7d7f7;
+            border: 0 solid #e2e8f0;
+            border-radius: 0.5rem; /* Decrease the border radius */
+            box-sizing: border-box;
+            color: #0d172a;
+            cursor: pointer;
+            display: inline-block;
+            font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            font-size: 0.9rem; /* Decrease the font size */
+            font-weight: 500;
+            line-height: 1;
+            padding: 0.6rem 0.8rem; /* Decrease the padding */
+            text-align: center;
+            text-decoration: none #0d172a solid;
+            text-decoration-thickness: auto;
+            transition: all .1s cubic-bezier(.4, 0, .2, 1);
+            box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            }
+
+            .buy-button:hover {
+            background-color: #1e293b;
+            color: #fff;
+            }
+
+            @media (min-width: 768px) {
+            .buy-button {
+              font-size: 1rem;
+              padding: 0.5rem 0.8rem;
+            }
+            }
+            </style>';
           echo '</div>';
           echo '</div>';
         }
