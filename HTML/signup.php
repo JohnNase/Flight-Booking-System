@@ -59,9 +59,10 @@
       <div class="input-group">
         <input type="text" id="phone" name="phone" required>
         <select id="country-code" name="country_code">
-          <option value="1" data-flag="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png">+1 (USA)</option>
-          <option value="44" data-flag="https://upload.wikimedia.org/wikipedia/commons/4/42/Flag_of_the_United_Kingdom.png">+44 (UK)</option>
-          <!-- Add more country options as needed -->
+          <!-- 
+        The select element below will be dynamically populated with country codes 
+        retrieved from an API using JavaScript/jQuery.
+      -->
         </select>
       </div>
     </div>
@@ -76,8 +77,10 @@
     <button type="submit" name="signup">Sign Up</button>
   </form>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="http://localhost/Flight-Booking-System/javascript/eventListeners.js"></script>  
+<script src="http://localhost/Flight-Booking-System/javascript/RestAPI-phoneNo.js"></script>
+
 </body>
 
 <style>
