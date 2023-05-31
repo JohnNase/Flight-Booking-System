@@ -1,12 +1,18 @@
-<body>
+<!DOCTYPE html>
+<html>
+<head>
 <style>
       body {
           margin: 0;
           padding: 0;
       }
       .header {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 999;
           overflow: hidden;
-          background-color: black;
+          background-color: #1e293b;
           font-family: Arial, Helvetica, sans-serif;
           margin: 0;
           padding: 0;
@@ -21,8 +27,8 @@
       }
       .header a:hover,
       .header dropbtn {
-          background-color: rgb(255, 167, 251);
-          color: brown;
+          background-color: whitesmoke;
+          color: #1e293b;
       }
 
       /* smaller view */
@@ -54,8 +60,11 @@
       }
 
 </style>
+</head>
+<body>
 
 <div class="header">
+      <a id="home-btn" href="http://localhost/Flight-Booking-System/index.php" color="white">HOME</a>
       <a id="login-btn" href="http://localhost/Flight-Booking-System/HTML/login.php" color="white">LOGIN</a>
       <a id="register-btn" href="http://localhost/Flight-Booking-System/HTML/signup.php" color="white">SIGN UP</a>
       <a id="availableflights-btn" href="http://localhost/Flight-Booking-System/HTML/availableflights.php" color="white">AVAILABLE FLIGHTS</a>
@@ -65,3 +74,4 @@
  </div>
  <script src="http://localhost/Flight-Booking-System/javascript/eventListeners.js"></script>
 </body>
+</html>
