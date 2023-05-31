@@ -8,6 +8,8 @@
 <?php
 	include('navbar.php');  
 ?>
+<br>
+<br>
 
 <div class="container">
   <form action="http://localhost/Flight-Booking-System/HTML/authenticateSignUp.php" method="POST">

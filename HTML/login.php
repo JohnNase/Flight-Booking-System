@@ -33,6 +33,9 @@ if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
         <?php
                 include('navbar.php'); 
             ?>
+            <br>
+            <br>
+            
             <div class="login-container">
                 <h2>Login</h2>
                 <form action=" http://localhost/Flight-Booking-System/HTML/authenticateLogin.php" method="POST">
