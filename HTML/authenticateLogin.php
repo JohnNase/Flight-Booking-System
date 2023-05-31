@@ -1,9 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-session_start();
-
 // Establish database connection
 $host = 'localhost';
 $user = 'root';
@@ -15,38 +10,45 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve username and password from the login form
-$username = trim($_POST['username']);
-$password = trim($_POST['password']);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// Sanitize and validate the user input
-$username = $conn->real_escape_string($username);
-$password = $conn->real_escape_string($password);
+session_start();
 
-// Query the database
-$sql_admin = "SELECT * FROM administrator WHERE administrator_username = '$username' AND administrator_password = '$password'";
-$result_admin = $conn->query($sql_admin);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve username and password from the login form
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-$sql_passenger = "SELECT * FROM passengers WHERE passenger_username = '$username' AND passenger_password = '$password'";
-$result_passenger = $conn->query($sql_passenger);
+    // Sanitize and validate the user input
+    $username = $conn->real_escape_string($username);
+    $password = $conn->real_escape_string($password);
 
-if ($result_admin->num_rows == 1) {
-    // User authenticated, set session variable or issue token
-    $_SESSION['username'] = $username;
+    // Query the database
+    $sql = "SELECT passenger_username FROM passengers WHERE passenger_username = '$username' AND passenger_password = '$password'";
+    $result = $conn->query($sql);
 
-    // Redirect user to appropriate page based on role
-    header('Location: admin_page.php');
-} elseif ($result_passenger->num_rows == 1) {
-    // User authenticated, set session variable or issue token
-    $_SESSION['username'] = $username;
+    if ($result->num_rows == 1) {
+        // User authenticated, retrieve the user ID
+        $row = $result->fetch_assoc();
+        $user_id = $row['passenger_username'];
 
-    // Redirect user to appropriate page based on role
-    header('Location: passenger_page.php');
-} else {
-    // Authentication failed, redirect back to login page with error message
-    $error = "Invalid username or password.";
-    header("Location: login.php?error=" . urlencode($error));
+        // Set the session and cookie with the user ID
+        $_SESSION['username'] = $user_id;
+        $expiry = time() + (30 * 24 * 60 * 60); // Set the expiration time to a desired duration (30 days in this example)
+        setcookie('username', $user_id, $expiry, '/');
+        
+        // Redirect the user to the desired page
+        header('Location: clientDashboard.php');
+        exit;
+    } else {
+        // Authentication failed, redirect back to login page with error message
+        $error = "Invalid username or password.";
+        header("Location: login.php?error=" . urlencode($error));
+        exit;
+    }
+} elseif (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
+    // Restore the session if the cookie exists and the session does not
+    $_SESSION['username'] = $_COOKIE['username'];
 }
-
-$conn->close();
 ?>
