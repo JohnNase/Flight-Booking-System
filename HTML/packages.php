@@ -35,7 +35,6 @@ $conn->close();
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Airline Ticket Memberships</title> 
   <style>
     body {
   font-family: Arial, sans-serif;
@@ -111,6 +110,9 @@ footer {
 include('navbar.php'); 
 ?>
   <header>
+    <br>
+    <br>
+    <br>
     <h1>Airline Ticket Memberships</h1>
   </header>
 

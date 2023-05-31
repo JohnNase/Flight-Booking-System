@@ -11,6 +11,9 @@
 
 <div class="container">
   <form action="http://localhost/Flight-Booking-System/HTML/authenticateSignUp.php" method="POST">
+    <br>
+    <br>
+     
     <h2>Sign Up</h2>
     <?php $sendNotifications = false; // Initialize the variable
 
