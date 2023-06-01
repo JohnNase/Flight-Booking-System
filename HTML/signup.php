@@ -60,12 +60,23 @@
       <label for="phone">Phone Number</label>
       <div class="input-group">
         <input type="text" id="phone" name="phone" required>
-        <select id="country-code" name="country_code">
-          <!-- 
-        The select element below will be dynamically populated with country codes 
-        retrieved from an API using JavaScript/jQuery.
-      -->
-        </select>
+        <select id="country-code" name="country_code" class="country-code">
+      <?php
+      $url = 'https://restcountries.com/v3.1/independent?status=true';
+      $data = file_get_contents($url);
+      $phpArr = json_decode($data, true);
+
+      if ($phpArr) {
+        foreach ($phpArr as $k) {
+          if (isset($k['name'])) {
+            echo '<option value="'.$k['name']['common'].' '.$k['idd']['root'].$k['idd']['suffixes'][0].'">'.$k['idd']['root'].$k['idd']['suffixes'][0].'</option>';
+          }
+        }
+      } else {
+        echo '<option value="">Error: Unable to retrieve country data.</option>';
+      }
+      ?>
+    </select>
       </div>
     </div>
     <div class="form-group">
@@ -81,7 +92,31 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="http://localhost/Flight-Booking-System/javascript/eventListeners.js"></script>  
-<script src="http://localhost/Flight-Booking-System/javascript/RestAPI-phoneNo.js"></script>
+ 
+
+<script>
+$(document).ready(function() {
+  // AJAX request to retrieve country codes
+  $.ajax({
+    url: 'http://localhost/Flight-Booking-System/HTML/getCountryCodes-api.php',
+    method: 'GET',
+    dataType: 'json',
+    success: function(response) {
+      // Process the response and populate the select element
+      var select = $('#country-code');
+
+      response.forEach(function(countryCode) {
+        var option = $('<option></option>').val(countryCode).text(countryCode);
+        select.append(option);
+      });
+    },
+    error: function() {
+      // Handle errors if the API request fails
+      console.log('Failed to retrieve country codes.');
+    }
+  });
+});
+</script>
 
 </body>
 
