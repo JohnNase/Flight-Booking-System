@@ -130,7 +130,7 @@ if ($stmt->error) {
           echo '<div class="flight-price">  $' . $row["ticket_price"] .  '&nbsp</div>';
           // echo '<div class="flight-airline">' . $row["airline_name"] . '</div>';
           echo '<br>';
-          echo '<button class="buy-button">Buy Ticket</button> <style>
+          echo '<button class="buy-button"  onclick="redirectToPayment()">Buy Ticket</button> <style>
           .buy-button {
             background-color: #d7d7f7;
             border: 0 solid #e2e8f0;
@@ -175,5 +175,10 @@ if ($stmt->error) {
       $conn->close();
     ?> 
   </div>
+  <script>
+    function redirectToPayment() {
+      window.location.href = "http://localhost/Flight-Booking-System/HTML/payment.php"; // Replace with the actual URL of your payment page
+    }
+  </script>
 </body>
 </html>
