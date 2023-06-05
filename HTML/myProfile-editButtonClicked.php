@@ -1,8 +1,6 @@
 <?php
 include('navbarClient.php'); 
-echo '<br>';
-echo '<br>';
-echo '<br>';
+
 require_once('config.php'); // Include the database configuration file
 session_start();
 
@@ -35,7 +33,7 @@ try {
         body {
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
-            padding: 20px;
+            padding-top: 70px;
         }
         
         .container {

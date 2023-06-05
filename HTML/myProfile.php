@@ -1,8 +1,5 @@
 <?php
 include('navbarClient.php'); 
-echo '<br>';
-echo '<br>';
-
 require_once('config.php'); // Include the database configuration file
 session_start();
 
@@ -34,8 +31,8 @@ try {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            padding: 20px;
+            background-color: #f7f7f7; 
+            padding-top: 70px;
         }
         
         .container {
