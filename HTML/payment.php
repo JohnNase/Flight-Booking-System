@@ -2,8 +2,13 @@
 session_start();
 
 // Check if the user is logged in
-if (!isset($_SESSION['username'])) {
-	header('Location: http://localhost/Flight-Booking-System/HTML/login.php');
+if (!isset($_SESSION['username'])) { 
+
+		  // Store the current page URL in a session variable
+    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
+
+    // Redirect the user to the login page
+    header('Location: login.php');
     exit;
 }
 
@@ -14,6 +19,39 @@ if (!isset($_SESSION['username'])) {
 <html>
 <head>
 <style> 
+
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+button {
+    margin-top: 10px;
+}
+
 
 .tab {
   float: left;
@@ -123,6 +161,14 @@ input[type="reset"]:hover {
 		<button class="tablinks" onclick="openCity(event, 'Wallet/Cash Card')">Wallet/Cash Card</button>
 		<button class="tablinks" onclick="openCity(event, 'IMPS')">IMPS</button>
 	</div>	
+
+	<div id="popup" style="display: none;">
+    <div id="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <p>Login first!</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+	</div>
 	
 	<div id="Credit Card" class="tabcontent">
 		<h3>Pay by Credit Card</h3>

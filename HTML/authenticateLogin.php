@@ -37,11 +37,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['username'] = $user_id;
         $expiry = time() + (30 * 24 * 60 * 60); // Set the expiration time to a desired duration (30 days in this example)
         setcookie('username', $user_id, $expiry, '/');
-        
-        // Redirect the user to the desired page
+
+        // Check if there is a redirect URL stored in the session
+    if (isset($_SESSION['redirect_url'])) {
+        // Redirect the user back to the stored URL
+        $redirect_url = $_SESSION['redirect_url'];
+        unset($_SESSION['redirect_url']); // Remove the stored URL from the session
+        header("Location: $redirect_url");
+        exit;
+    }
+
+    // If there is no redirect URL, redirect the user to a default page
+ 
         header('Location: clientDashboard.php');
         exit;
-    } else {
+    } 
+    
+    else {
         // Authentication failed, redirect back to login page with error message
         $error = "Invalid username or password.";
         header("Location: login.php?error=" . urlencode($error));

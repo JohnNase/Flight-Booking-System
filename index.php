@@ -121,12 +121,12 @@
 								<div class="col-md-3">
 									<div class="form-group">
 										<span class="form-label" style="color: white;">Travel class</span>
-										<select class="form-control" name='travel_class' style="color: black;" >
+										<select class="form-control" name='travel_class' id="travel_class" style="color: black;" >
 											<option style="color: black;">select a travel class:</option>
-											<option style="color: black;">economy</option>
-											<option style="color: black;">business</option>
-											<option style="color: black;">first class</option>
-											<option style="color: black;">all travel classes included</option>
+											<option style="color: black;" id="tc">economy</option>
+											<option style="color: black;" id="tc">business</option>
+											<option style="color: black;" id="tc">first class</option>
+											<option style="color: black;" id="tc">all travel classes included</option>
 										</select>
 										<span class="select-arrow"></span>
 									</div>
