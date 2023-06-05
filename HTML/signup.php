@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital@1&display=swap" rel="stylesheet">
   <title>Sign Up</title> 
 </head>
 <body>
@@ -121,6 +123,9 @@ $(document).ready(function() {
 </body>
 
 <style>
+  body{
+    background-color: whitesmoke;
+  }
   .container {
     width: 400px;
     margin: 0 auto;
@@ -128,31 +133,36 @@ $(document).ready(function() {
   }
   
   h2 {
-    text-align: center;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    text-align: center; 
   }
   
   .form-group {
     margin-bottom: 20px;
   }
   
-  label {
+  label { 
+    font-family: 'PT Sans', sans-serif;
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
   }
   
   input[type="text"],
   input[type="password"],
   input[type="date"],
-  input[type="email"]  {
+  input[type="email"]{ 
     width: 100%;
     height: 30px;
-    padding: 5px;
+    padding: 5px;  
   }
   
   button[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #f23e3e;
+    background-color: #1e293b;
     color: #fff;
     border: none;
     border-radius: 5px;
