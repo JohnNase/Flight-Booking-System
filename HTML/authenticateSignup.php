@@ -11,7 +11,7 @@ $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+session_start();
 if (isset($_POST['signup'])) {
     $fullName = $_POST['full_name'];
     $username = $_POST['username'];
@@ -50,6 +50,8 @@ if ($result->num_rows > 0) {
 
     // Check if the insertion was successful
     if ($stmt->affected_rows > 0) {
+        session_start();
+        $_SESSION['username'] = $username; 
         // User registered successfully, redirect to success page
         header('Location: clientDashboard.php');
         exit();

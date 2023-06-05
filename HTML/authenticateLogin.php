@@ -10,9 +10,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // If there is no redirect URL, redirect the user to a default page
- 
+
         header('Location: clientDashboard.php');
         exit;
     } 

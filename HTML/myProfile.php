@@ -2,24 +2,32 @@
 include('navbarClient.php');
 require_once('config.php');
 session_start();
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
 
-$username = $_SESSION['username'];
+    $username = $_SESSION['username'];
 
-try {
-    $stmt = $conn->prepare('SELECT * FROM passengers WHERE passenger_username = :username');
-    $stmt->bindParam(':username', $username);
+    try {
+        $stmt = $conn->prepare('SELECT * FROM passengers WHERE passenger_username = :username');
+        $stmt->bindParam(':username', $username);
 
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $fullName = $user['passenger_fullname'];
-    $email = $user['passenger_email'];
-    $phoneNumber = $user['passenger_phone'];
-    $memberships = $user['packages_no'];
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
+        $fullName = $user['passenger_fullname'];
+        $email = $user['passenger_email'];
+        $phoneNumber = $user['passenger_phone'];
+        $memberships = $user['packages_no'];
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+else{
+    exit(); 
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
