@@ -149,7 +149,7 @@ try {
             <div class="profile-info">
                 <p><strong>Full Name:</strong> <input type="text" name="full_name" value="<?php echo $fullName; ?>"></p>
                 <br>
-                <p><strong>Username:</strong> <input type="text" name="username" value="<?php echo $username; ?>" readonly></p>
+                <p><strong>Username:</strong> <input type="text" name="username" value="<?php echo $username; ?>" ></p>
                 <br>
                 <p><strong>Email:</strong> <input type="email" name="email" value="<?php echo $email; ?>"></p>
                 <br>
