@@ -59,8 +59,22 @@
 </head>
 <body>
 <?php
-  include('navbar.php')
-  ?>
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "webproject";
+
+// Check if the user is logged in
+session_start();
+$loggedIn = isset($_SESSION['username']);
+
+// Include the appropriate navbar based on login status
+if ($loggedIn) {
+  include('navbarClient.php');
+} else {
+  include('navbar.php');
+}
+?> 
   <br>
   <br>
   <br>

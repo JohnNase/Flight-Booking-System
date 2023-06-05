@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['username'])) {
+	header('Location: http://localhost/Flight-Booking-System/HTML/login.php');
+    exit;
+}
+
+// User is logged in, continue with the payment process
+?>
 
 <!DOCTYPE html>
 <html>
@@ -99,7 +110,7 @@ input[type="reset"]:hover {
 
 <body>
     <?php
-    include('navbar.php'); 
+    include('navbarClient.php'); 
     ?>
     <br>
     <br>

@@ -55,7 +55,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="booking-form">
-						<form action="HTML\searchResults.php" method="GET">
+						<form action="http://localhost/Flight-Booking-System/HTML/searchResults.php" method="GET">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
@@ -137,7 +137,7 @@
 									<style>
 
 										.show-flights {
-										background-color: #cfbae6;
+										background-color: #fff;
 										border: 0 solid #e2e8f0;
 										border-radius: 1.5rem;
 										box-sizing: border-box;
@@ -160,8 +160,8 @@
 										}
 
 										.show-flights:hover {
-										background-color:  #443257;;
-										color: #cfbae6;
+										background-color: #1e293b;
+										color: #fff;
 										}
 
 										@media (min-width: 768px) {
@@ -181,7 +181,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- <script src="http://localhost/Flight-Booking-System/javascript/populateDepartures&Destinations.js"></script> -->
+	<script src="http://localhost/Flight-Booking-System/javascript/populateDepartures&Destinations.js"></script>
+	<script src="http://localhost/Flight-Booking-System/javascript/eventListenersClient.js"></script>
 </body>
 
 </html>

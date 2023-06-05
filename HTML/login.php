@@ -25,6 +25,8 @@ if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
         <!DOCTYPE html>
         <html lang="en">
         <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital@1&display=swap" rel="stylesheet">
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Login Page</title> 
@@ -75,8 +77,11 @@ if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        h2 {
-            text-align: center;
+        h2 { 
+        font-family: 'Montserrat Alternates', sans-serif;
+        font-weight: bolder;
+        font-size: 25px;
+        text-align: center; 
         }
 
         .form-group {

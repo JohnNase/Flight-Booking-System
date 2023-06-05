@@ -32,7 +32,7 @@ if (isset($_POST['signup'])) {
     $sql = "INSERT INTO passengers (passenger_fullname, passenger_username, passenger_email, passenger_password, passenger_phone, passenger_notifications) VALUES ('$fullName', '$username', '$email', '$password', '$phoneno', '$sendNotifications')";
     if ($conn->query($sql) === TRUE) {
         // User registered successfully, redirect to success page
-         header('Location: passenger_page.php');
+         header('Location: clientDashboard.php');
         exit();
     } else {
         // Error occurred while inserting data, handle the error
