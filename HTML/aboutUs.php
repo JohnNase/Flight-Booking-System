@@ -18,6 +18,7 @@
       margin: 0;
       padding: 0;
      }
+
     .hero {
       background-image: url('http://localhost/Flight-Booking-System/img/hero-background.png');
       background-position: center;
@@ -26,8 +27,9 @@
       padding: 160px 0 40px;
       text-align: center;
       position: relative;
-      margin-top: 60px; /* Add margin-top to push the content below the navbar */
+      margin-top: 60px;
     }
+
    .hero h1 {
       font-family: 'Montserrat Alternates', sans-serif;
       font-size: 50px;
@@ -36,6 +38,7 @@
       color: white;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     }
+
     .hero:after {
       content: "";
       position: absolute;
@@ -45,26 +48,31 @@
       height: 100%;
       background-color: rgba(0, 0, 0, 0.4);
     }
+
     .content {
       padding: 40px 0;
     }
+
     .container {
       max-width: 900px;
       margin: 0 auto;
       padding: 0 20px;
     }
+
     h2 {
       font-family: 'Roboto Mono', monospace;
       font-size: 24px;
       color: #333;
       margin-bottom: 20px;
     }
+
     p {
       font-size: 19px;
       color: #666;
       line-height: 1.5;
       margin-bottom: 30px;
     }
+    
     .values-paragraph {
       font-size: 18px;
       color: #666;

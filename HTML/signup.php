@@ -38,26 +38,32 @@
       <?php } 
     }?>
 
+    <br>
     <div class="form-group">
       <label for="full-name">Full Name</label>
       <input type="text" id="full-name" name="full_name" value="<?php echo isset($fullName) ? $fullName : ''; ?>" required>
     </div>
+    <br>
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" value="<?php echo isset($username) ? $username : ''; ?>" required>
     </div>
+    <br>
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" id="email" name="email" value="<?php echo isset($email) ? $email : ''; ?>" required>
     </div>
+    <br>
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
     </div>
+    <br>
     <div class="form-group">
       <label for="verify-password">Verify Password</label>
       <input type="password" id="verify-password" name="verify_password" required>
     </div>
+    <br>
     <div class="form-group phone-group">
       <label for="phone">Phone Number</label>
       <div class="input-group">
@@ -85,10 +91,12 @@
       <label for="birthdate">Birthdate</label>
       <input type="date" id="birthdate" name="birthdate" value="<?php echo isset($birthdate) ? $birthdate : ''; ?>" required>
     </div>
+    <br>
     <div class="form-group">
       <label for="send-notifications">Send Notifications</label>
       <input type="checkbox" id="send-notifications" name="send_notifications" <?php echo $sendNotifications ? 'checked' : ''; ?>>
     </div>
+    <br>
     <button type="submit" name="signup">Sign Up</button>
   </form>
 </div>
@@ -135,7 +143,7 @@ $(document).ready(function() {
   h2 {
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: bolder;
-    font-size: 30px;
+    font-size: 35px;
     text-align: center; 
   }
   
@@ -145,6 +153,7 @@ $(document).ready(function() {
   
   label { 
     font-family: 'PT Sans', sans-serif;
+    font-size: 20px;
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
@@ -162,6 +171,7 @@ $(document).ready(function() {
   button[type="submit"] {
     width: 100%;
     padding: 10px;
+    font-size: 20px;
     background-color: #1e293b;
     color: #fff;
     border: none;

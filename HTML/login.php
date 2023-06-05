@@ -40,15 +40,19 @@ if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
             
             <div class="login-container">
                 <h2>Login</h2>
+                <br>
                 <form action=" http://localhost/Flight-Booking-System/HTML/authenticateLogin.php" method="POST">
                     <div class="form-group">
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" required>
                     </div>
+                    <br>
                     <div class="form-group">
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" required>
                     </div>
+                    <br>
+                    <br>
                     <div class="form-group">
                         <input type="submit" value="Log In">
                     </div>
@@ -80,7 +84,7 @@ if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
         h2 { 
         font-family: 'Montserrat Alternates', sans-serif;
         font-weight: bolder;
-        font-size: 25px;
+        font-size: 35px;
         text-align: center; 
         }
 
@@ -90,6 +94,7 @@ if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
 
         label {
             display: block;
+            font-size: 20px;
             font-weight: bold;
         }
 
@@ -105,6 +110,7 @@ if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
         input[type="submit"] {
             width: 100%;
             height: 40px;
+            font-size: 20px;
             background-color: #4caf50;
             color: #fff;
             border: none;
