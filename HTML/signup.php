@@ -1,3 +1,10 @@
+<?php
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+
+include('authenticateSignup.php'); ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +15,8 @@
 </head>
 <body>
 <?php
-	include('navbar.php');  
+	include('navbar.php'); 
+   
 ?>
 <br>
 <br>
@@ -19,6 +27,11 @@
     <br>
      
     <h2>Sign Up</h2>
+    <?php if (isset($_GET['error'])) { ?>
+    <div class="error">
+        <p><?php echo $_GET['error']; ?></p>
+    </div>
+<?php } ?>
     <?php $sendNotifications = false; // Initialize the variable
 
     if (isset($_POST['signup'])) {
@@ -38,99 +51,111 @@
       <?php } 
     }?>
 
-    <br>
     <div class="form-group">
       <label for="full-name">Full Name</label>
       <input type="text" id="full-name" name="full_name" value="<?php echo isset($fullName) ? $fullName : ''; ?>" required>
     </div>
-    <br>
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" value="<?php echo isset($username) ? $username : ''; ?>" required>
     </div>
-    <br>
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" id="email" name="email" value="<?php echo isset($email) ? $email : ''; ?>" required>
     </div>
-    <br>
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
     </div>
-    <br>
     <div class="form-group">
       <label for="verify-password">Verify Password</label>
-      <input type="password" id="verify-password" name="verify_password" required>
+      <input type="password" id="verify-password" name="verify-password" required>
     </div>
-    <br>
     <div class="form-group phone-group">
       <label for="phone">Phone Number</label>
       <div class="input-group">
         <input type="text" id="phone" name="phone" required>
-        <select id="country-code" name="country_code" class="country-code">
-      <?php
-      $url = 'https://restcountries.com/v3.1/independent?status=true';
-      $data = file_get_contents($url);
-      $phpArr = json_decode($data, true);
+        <select id="country" name="country"></select>
 
-      if ($phpArr) {
-        foreach ($phpArr as $k) {
-          if (isset($k['name'])) {
-            echo '<option value="'.$k['name']['common'].' '.$k['idd']['root'].$k['idd']['suffixes'][0].'">'.$k['idd']['root'].$k['idd']['suffixes'][0].'</option>';
-          }
+<script>
+  function getAccessToken(getAuthorizedRequest){
+    const httpRequest = new XMLHttpRequest();
+  
+    httpRequest.onreadystatechange = function(){
+      if(this.status === 200 && this.readyState === 4){
+        const response = JSON.parse(this.response);
+        console.log(response, typeof response);
+        if(typeof getAuthorizedRequest === 'function'){
+          getAuthorizedRequest(response.auth_token);
         }
-      } else {
-        echo '<option value="">Error: Unable to retrieve country data.</option>';
       }
-      ?>
-    </select>
+    }
+    httpRequest.open('GET','https://www.universal-tutorial.com/api/getaccesstoken');
+    httpRequest.setRequestHeader('accept','application/json');
+    httpRequest.setRequestHeader('api-token','L6Shm93M0qUlphwr3q4TIivgLPly0NggLB5Uazpu-3_xr_tbLZbXIrxcRXFB3HObNA4');
+    httpRequest.setRequestHeader('user-email','sberberi21@epoka.edu.al');
+    
+    httpRequest.send();
+  }
+  
+  function getCountriesCode(authToken){
+    const httpRequest = new XMLHttpRequest();
+  
+    httpRequest.onreadystatechange = function(){
+      if(this.readyState === 4 && this.status === 200){
+        const countries = JSON.parse(this.response);
+
+        const selectCountry = document.getElementById('country');
+  
+        countries.forEach((country)=>{
+          const option = document.createElement('option');
+          option.text = country.country_name + ' (+' + country.country_phone_code + ')';
+          option.value = country.country_phone_code;
+  
+          selectCountry.appendChild(option);
+        });
+      }
+    }
+  
+    httpRequest.open('GET','https://www.universal-tutorial.com/api/countries');
+    httpRequest.setRequestHeader('accept', 'application/json');
+    httpRequest.setRequestHeader('authorization',`Bearer ${authToken}`);
+  
+    httpRequest.send();
+  }
+  
+  getAccessToken(getCountriesCode);
+  
+  const countryInput = document.getElementById('country');
+  const phoneInput = document.getElementById('phone');
+  
+  countryInput.addEventListener('change',()=>{
+    const countryCode = countryInput.value;
+  
+    phoneInput.placeholder = `+(${countryCode})`;
+  });
+</script>
       </div>
     </div>
     <div class="form-group">
       <label for="birthdate">Birthdate</label>
       <input type="date" id="birthdate" name="birthdate" value="<?php echo isset($birthdate) ? $birthdate : ''; ?>" required>
     </div>
-    <br>
     <div class="form-group">
       <label for="send-notifications">Send Notifications</label>
       <input type="checkbox" id="send-notifications" name="send_notifications" <?php echo $sendNotifications ? 'checked' : ''; ?>>
     </div>
-    <br>
     <button type="submit" name="signup">Sign Up</button>
   </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="http://localhost/Flight-Booking-System/javascript/eventListeners.js"></script>  
- 
 
-<script>
-$(document).ready(function() {
-  // AJAX request to retrieve country codes
-  $.ajax({
-    url: 'http://localhost/Flight-Booking-System/HTML/getCountryCodes-api.php',
-    method: 'GET',
-    dataType: 'json',
-    success: function(response) {
-      // Process the response and populate the select element
-      var select = $('#country-code');
-
-      response.forEach(function(countryCode) {
-        var option = $('<option></option>').val(countryCode).text(countryCode);
-        select.append(option);
-      });
-    },
-    error: function() {
-      // Handle errors if the API request fails
-      console.log('Failed to retrieve country codes.');
-    }
-  });
-});
-</script>
 
 </body>
 
 <style>
+  
   body{
     background-color: whitesmoke;
   }
@@ -143,7 +168,7 @@ $(document).ready(function() {
   h2 {
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: bolder;
-    font-size: 35px;
+    font-size: 30px;
     text-align: center; 
   }
   
@@ -153,7 +178,6 @@ $(document).ready(function() {
   
   label { 
     font-family: 'PT Sans', sans-serif;
-    font-size: 20px;
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
@@ -171,7 +195,6 @@ $(document).ready(function() {
   button[type="submit"] {
     width: 100%;
     padding: 10px;
-    font-size: 20px;
     background-color: #1e293b;
     color: #fff;
     border: none;
