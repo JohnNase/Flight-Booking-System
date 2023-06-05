@@ -66,9 +66,9 @@
 <div class="header">
 <a id="logOut-btn" href="http://localhost/Flight-Booking-System/HTML/logout.php" color="white">LOG OUT</a>
       <a id="home-btn" href="http://localhost/Flight-Booking-System/clientDashboard.php" color="white">HOME</a>
-      <a id="myProfile-btn" href="http://localhost/Flight-Booking-System/inConstruction.php" color="white">MY PROFILE</a>
-      <a id="myFlights-btn" href="http://localhost/Flight-Booking-System/inConsutrction.php" color="white">MY FLIGHTS</a>
-      <a id="Notifications-btn" href="http://localhost/Flight-Booking-System/inConstruction.php" color="white">NOTIFICATIONS</a>
+      <a id="myProfile-btn" href="http://localhost/Flight-Booking-System/HTML/myProfile.php" color="white">MY PROFILE</a>
+      <a id="myFlights-btn" href="http://localhost/Flight-Booking-System/HTML/inConstruction.php" color="white">MY FLIGHTS</a>
+      <a id="Notifications-btn" href="http://localhost/Flight-Booking-System/HTML/inConstruction.php" color="white">NOTIFICATIONS</a>
       
       
       </div>
