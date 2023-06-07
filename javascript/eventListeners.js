@@ -68,10 +68,10 @@ registerButton.addEventListener('click', function(event) {
 
 
 const homeButton = document.getElementById('home-btn');
-availableflightsButton.addEventListener('click', function(event) {
+homeButton.addEventListener('click', function(event) {
   event.preventDefault(); // Prevent the default link behavior
   // Redirect to the desired page
-  window.location.assign('http://localhost/Flight-Booking-System/Scrollbar.php');
+  window.location.assign('http://localhost/Flight-Booking-System/index.php');
 });
 
 
