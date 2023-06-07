@@ -56,7 +56,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="booking-form">
-						<form action="HTML\searchResults.php" method="GET">
+						<form action="http://localhost/Flight-Booking-System/HTML/searchResults.php" method="GET">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">

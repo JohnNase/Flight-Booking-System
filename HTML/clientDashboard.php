@@ -37,7 +37,7 @@
 
 </head>
 
-<body>
+<body >
 	<?php
 	$sqlDepartures = "SELECT DISTINCT departure FROM flight";
 	$departures = $conn->query($sqlDepartures);
@@ -50,7 +50,7 @@
 	<?php
 	include 'navbarClient.php';
 	?>
-	<div id="booking" class="section" style="margin-top: 0;">
+	<div id="booking" class="section" style="margin-top: 0; background-image: url('../img/background3.jpg');">
 		<div class="section-center">
 			<div class="container">
 				<div class="row">

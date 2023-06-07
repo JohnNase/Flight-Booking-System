@@ -132,7 +132,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
 
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="http://localhost/Flight-Booking-System/css/style.css">
 
 
 	<style>
@@ -161,7 +161,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="booking-form">
-						<form action="HTML\searchResults.php" method="GET">
+						<form action="http://localhost/Flight-Booking-System/HTML/searchResults.php" method="GET">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">

@@ -150,9 +150,6 @@ input[type="reset"]:hover {
     <?php
     include('navbarClient.php'); 
     ?>
-    <br>
-    <br>
-    <br> 
 	<div class="tab">
 		<button class="tablinks" onclick="openCity(event, 'Credit Card')"id="defaultOpen">Credit Card</button>
 		<button class="tablinks" onclick="openCity(event, 'Debit Card')">Debit Card</button>

@@ -2,8 +2,7 @@
 <html>
 <head>
 
-  <style>
-    /* CSS Styles for Flight Search Results */
+  <style> 
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -75,14 +74,6 @@ if ($loggedIn) {
   include('navbar.php');
 }
 ?> 
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div class="header">
-    
-  </div>
 
   <div class="container">
     <?php
