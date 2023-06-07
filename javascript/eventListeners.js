@@ -3,7 +3,7 @@
 // from html:
 //  <a id= "login-btn" href="login" color=white>LOGIN</a>
 // // 		<a id= "register-btn" href="register" color="white">SIGN UP</a>
-// // 		<a id= "availableflights-btn" href="showavailabileflights" color=white>AVAILABILE FLIGHTS</a>
+// // 		<a id= "flights-btn" href="showavailabileflights" color=white>AVAILABILE FLIGHTS</a>
 // // 		<a id= "contactus-btn" href="contactus" color=white>CONTACT US</a>
 // // 		<a id= "packages-btn" href="packages" color=white>PACKAGES</a> 
 // // 		<a id= "aboutus-btn" href="aboutus" color=white>ABOUT US</a>
@@ -41,7 +41,7 @@ aboutusButton.addEventListener('click', function(event){
 
 // JOHN'S EVENT LISTENERS:
 
-// AVAILABLE FLIGHTS
+// SEARCH FLIGHTS
 const availableflightsButton = document.getElementById('availableflights-btn');
 availableflightsButton.addEventListener('click', function(event) {
   event.preventDefault(); // Prevent the default link behavior
@@ -71,7 +71,7 @@ const homeButton = document.getElementById('home-btn');
 availableflightsButton.addEventListener('click', function(event) {
   event.preventDefault(); // Prevent the default link behavior
   // Redirect to the desired page
-  window.location.assign('http://localhost/Flight-Booking-System/index.php');
+  window.location.assign('http://localhost/Flight-Booking-System/Scrollbar.php');
 });
 
 

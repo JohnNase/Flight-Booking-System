@@ -50,7 +50,8 @@
 	<?php
 	include 'navbar.php';
 	?>
-	<div id="booking" class="section" style="margin-top: 0;">
+
+	<div id="booking" class="section">
 		<div class="section-center">
 			<div class="container">
 				<div class="row">

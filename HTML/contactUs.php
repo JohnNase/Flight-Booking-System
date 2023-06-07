@@ -11,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital@1&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 
   <style>
     body {
@@ -22,7 +21,7 @@
       background-color: #f8f8f8;
       padding: 50px;
       text-align: center;
-      margin-top: 50px;
+      /* margin-top: 50px; */
     }
 
     .contact-section h2 {

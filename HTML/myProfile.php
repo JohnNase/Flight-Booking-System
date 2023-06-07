@@ -44,8 +44,7 @@ else{
         body {
             font-family: 'PT Sans', sans-serif;
             background-color: #f7f7f7;
-            font-size: 22px;
-            padding-top: 70px;
+            font-size: 22px; 
         }
 
         .container {

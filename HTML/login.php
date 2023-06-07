@@ -15,7 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
  
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
     // Restore the session if the cookie exists and the session does not

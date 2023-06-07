@@ -110,9 +110,6 @@ footer {
 include('navbar.php'); 
 ?>
   <header>
-    <br>
-    <br>
-    <br>
     <h1>Airline Ticket Memberships</h1>
   </header>
 
@@ -140,7 +137,7 @@ include('navbar.php');
   </main>
 
   <footer>
-    <p>&copy; 2023 Lorem ipsum Company. All rights reserved.</p>
+    <p>&copy; 2023 Fly Easy Company. All rights reserved.</p>
   </footer>
   <script>
     // Add event listeners to membership cards

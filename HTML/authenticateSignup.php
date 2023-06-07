@@ -11,7 +11,9 @@ $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+  }
 if (isset($_POST['signup'])) {
     $fullName = $_POST['full_name'];
     $username = $_POST['username'];

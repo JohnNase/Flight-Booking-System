@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
-  <link rel="stylesheet" href="http://localhost/Flight-Booking-System/css/stylesForAboutUs.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital@1&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
       padding: 160px 0 40px;
       text-align: center;
       position: relative;
-      margin-top: 60px;
+      /* margin-top: 60px; */
     }
 
    .hero h1 {
