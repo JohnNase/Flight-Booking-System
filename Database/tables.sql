@@ -103,3 +103,9 @@ CREATE TABLE Notifications (
     Notification_datetime DATETIME NOT NULL,
     FOREIGN KEY (passenger_id) REFERENCES Passengers(passenger_id)
 );
+
+-- changes in the Transactions database
+
+ALTER TABLE transactions
+DROP COLUMN transaction_amount,
+DROP COLUMN transactions_ticketQuantity;

@@ -51,12 +51,12 @@
 	include 'navbar.php';
 	?>
 
-	<div id="booking" class="section">
+	<div id="booking" class="section"  >
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
 					<div class="booking-form">
-						<form action="http://localhost/Flight-Booking-System/HTML/searchResults.php" method="GET">
+						<form action="HTML\searchResults.php" method="GET">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">

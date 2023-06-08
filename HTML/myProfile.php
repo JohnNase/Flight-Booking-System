@@ -2,12 +2,15 @@
 include('navbarClient.php');
 require_once('config.php');
 if (!isset($_SESSION)) {
+    // var_dump("session started");
     session_start();
 }
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
+    // var_dump($_SESSION['username']);
 
     $sql = "SELECT * FROM passengers WHERE passenger_username = '$username'";
+    // var_dump($sql);
     $result = mysqli_query($conn, $sql);
 
     if ($result && mysqli_num_rows($result) > 0) {

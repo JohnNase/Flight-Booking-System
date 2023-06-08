@@ -5,10 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Perform login authentication here
     // If the login is successful, set the session and cookie
 
-    $_SESSION['username'] = $user_id; // Store the user ID in the session
+    $_SESSION['username'] = $usernamei; // Store the user ID in the session
 
     $expiry = time() + (30 * 24 * 60 * 60); // Set the expiration time to a desired duration (30 days in this example)
-    setcookie('username', $user_id, $expiry, '/'); // Set the cookie with the user ID
+    setcookie('username', $usernamei, $expiry, '/'); // Set the cookie with the user ID
 
     // Redirect the user to the desired page
     header('Location: clientDashboard.php');

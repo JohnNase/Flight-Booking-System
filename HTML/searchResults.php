@@ -1,60 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-  <style> 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #f4f4f4;
-      border: 1px solid #ccc;
-    }
-    
-    .flight-item {
-      margin-bottom: 20px;
-      padding: 20px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    .flight-item .flight-logo {
-      max-width: 100px;
-      margin-right: 20px;
-    }
-    
-    .flight-item .flight-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .flight-item .flight-info .flight-details {
-      flex-grow: 1;
-    }
-    
-    .flight-item .flight-info .flight-price {
-      font-size: 24px;
-      font-weight: bold;
-    }
-    
-    .flight-item .flight-info .flight-airline {
-      font-weight: bold;
-    }
-  </style>
+<link rel="stylesheet" href="http://localhost/Flight-Booking-System/css/searchResultsStyle.css">
 </head>
 <body>
 <?php
@@ -97,9 +44,10 @@ if ($loggedIn) {
       $adults = $_GET['adults'];
       $children = $_GET['children']; 
       $travelClass = $_GET['travel_class'];
+      
 
       // SQL query using the form data
-      $query = "SELECT DISTINCT f.departure, f.destination, fd.flight_date, t.ticket_type, t.ticket_price, a.airline_name
+      $query = "SELECT DISTINCT f.departure, f.destination, fd.flight_date, t.ticket_type, t.ticket_no, t.ticket_price, a.airline_name
             FROM Flight f
             JOIN FlightDate fd ON fd.Flight_No = f.flight_no
             JOIN Ticket t ON t.flight_no = f.flight_no
@@ -117,73 +65,37 @@ $stmt->execute();
 if ($stmt->error) {
   echo "Query Error: " . $stmt->error . "<br>";
 }
-      if ($result->num_rows > 0) {
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    $airline_name = $row['airline_name']; 
+    $imageUrl = "http://localhost/Flight-Booking-System/img/" . strtolower(str_replace(" ", "-", $airline_name)) . "-logo.png";
+    $ticket_no = $row['ticket_no']; 
 
-        while ($row = $result->fetch_assoc()) {
-
-          $airline_name = $row['airline_name']; 
-          $imageUrl = "http://localhost/Flight-Booking-System/img/" . strtolower(str_replace(" ", "-", $airline_name)) . "-logo.png";
-
-          echo '<div class="flight-item">';
-          echo '<div class="flight-info">';
-          echo '<img class="flight-logo" src="'.$imageUrl.'" alt="Airline Logo">';
-          echo '<div class="flight-details">';
-          echo '<h2>Flight from ' . $row["departure"] . ' to ' . $row["destination"] . '</h2>';
-          echo '<p>Date: ' . $row["flight_date"] . '</p>';
-          echo '<p>Ticket Type: ' . $row["ticket_type"] . '</p>';
-          echo '</div>';
-          echo '<div class="flight-price">  $' . $row["ticket_price"] .  '&nbsp</div>';
-          // echo '<div class="flight-airline">' . $row["airline_name"] . '</div>';
-          echo '<br>';
-          echo '<button class="buy-button"  onclick="redirectToPayment()">Buy Ticket</button> <style>
-          .buy-button {
-            background-color: #d7d7f7;
-            border: 0 solid #e2e8f0;
-            border-radius: 0.5rem; /* Decrease the border radius */
-            box-sizing: border-box;
-            color: #0d172a;
-            cursor: pointer;
-            display: inline-block;
-            font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-            font-size: 0.9rem; /* Decrease the font size */
-            font-weight: 500;
-            line-height: 1;
-            padding: 0.6rem 0.8rem; /* Decrease the padding */
-            text-align: center;
-            text-decoration: none #0d172a solid;
-            text-decoration-thickness: auto;
-            transition: all .1s cubic-bezier(.4, 0, .2, 1);
-            box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            }
-
-            .buy-button:hover {
-            background-color: #1e293b;
-            color: #fff;
-            }
-
-            @media (min-width: 768px) {
-            .buy-button {
-              font-size: 1rem;
-              padding: 0.5rem 0.8rem;
-            }
-            }
-            </style>';
-          echo '</div>';
-          echo '</div>';
-        }
-      } else {
-        echo "No flights found.";
-      } 
-      $conn->close();
-    ?> 
+    echo '<div class="flight-item">';
+    echo '<div class="flight-info">';
+    echo '<img class="flight-logo" src="'.$imageUrl.'" alt="Airline Logo">';
+    echo '<div class="flight-details">';
+    echo '<h2>Flight from ' . $row["departure"] . ' to ' . $row["destination"] . '</h2>';
+    echo '<p>Date: ' . $row["flight_date"] . '</p>';
+    echo '<p>Ticket Type: ' . $row["ticket_type"] . '</p>';
+    echo '</div>';
+    echo '<div class="flight-price">  $' . $row["ticket_price"] .  '&nbsp</div>';
+    echo '<br>';
+    echo '<button class="buy-button" onclick="redirectToPayment(\''.$ticket_no.'\')">Buy Ticket</button>';
+    echo '</div>';
+    echo '</div>';
+  }
+  } else {
+    echo "No flights found.";
+  }
+$conn->close();
+?>
   </div>
   <script>
-    function redirectToPayment() {
-      window.location.href = "http://localhost/Flight-Booking-System/HTML/payment.php"; // Replace with the actual URL of your payment page
-    }
+ function redirectToPayment(ticket_no) {
+  var encodedTicketNo = encodeURIComponent(ticket_no);
+  window.location.href = "http://localhost/Flight-Booking-System/HTML/payment.php?ticket_no=" + encodedTicketNo;
+}
   </script>
 </body>
 </html>

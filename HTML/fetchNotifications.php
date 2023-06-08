@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 $loggedInUser = $_SESSION['username'];
 
 // Fetch the data from the Notifications table
-$query = "SELECT message, Notification_datetime, passengers.passenger_fullname FROM Notifications JOIN Passengers ON Notifications.passenger_id = Passengers.passenger_id WHERE passengers.passenger_id = '$loggedInUser'";
+$query = "SELECT message, Notification_datetime, passengers.passenger_fullname FROM Notifications JOIN Passengers ON Notifications.passenger_id = Passengers.passenger_id WHERE passengers.passenger_username = '$loggedInUser'";
 $result = mysqli_query($conn, $query);
 // var_dump($query);
 // Prepare an array to hold the notification items

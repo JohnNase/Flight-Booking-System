@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // User authenticated, retrieve the user ID
         $row = $result->fetch_assoc();
         $user_id = $row['passenger_id'];
+        $usernamei = $row['passenger_username'];
         $user_id = $conn->real_escape_string($user_id);
 
         // Insert the login message into the database
@@ -39,9 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->query($insertSql);
 
         // Set the session and cookie with the user ID
-        $_SESSION['username'] = $user_id;
+        $_SESSION['username'] = $usernamei;
         $expiry = time() + (30 * 24 * 60 * 60); // Set the expiration time to a desired duration (30 days in this example)
-        setcookie('username', $user_id, $expiry, '/');
+        setcookie('username', $usernamei, $expiry, '/');
 
         // Check if there is a redirect URL stored in the session
     if (isset($_SESSION['redirect_url'])) {
