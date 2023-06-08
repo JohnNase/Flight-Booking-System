@@ -94,3 +94,12 @@ CREATE TABLE FlightDate
   PRIMARY KEY (flight_date, Flight_no),
   FOREIGN KEY (Flight_no) REFERENCES Flight(Flight_no)
 );
+
+
+CREATE TABLE Notifications (
+    notificationID INT AUTO_INCREMENT PRIMARY KEY,
+    passenger_id INT NOT NULL,
+    message VARCHAR(100) NOT NULL,
+    Notification_datetime DATETIME NOT NULL,
+    FOREIGN KEY (passenger_id) REFERENCES Passengers(passenger_id)
+);

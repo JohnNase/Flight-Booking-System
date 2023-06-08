@@ -25,9 +25,6 @@ include('authenticateSignup.php'); ?>
 
 <div class="container">
   <form action="http://localhost/Flight-Booking-System/HTML/authenticateSignUp.php" method="POST">
-    <br>
-    <br>
-     
     <h2>Sign Up</h2>
     <?php if (isset($_GET['error'])) { ?>
     <div class="error">
@@ -163,8 +160,7 @@ include('authenticateSignup.php'); ?>
   }
   .container {
     width: 400px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 0 auto; 
   }
   
   h2 {

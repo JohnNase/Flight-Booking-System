@@ -1,29 +1,28 @@
 <?php
 include('navbarClient.php');
 require_once('config.php');
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 
-    $username = $_SESSION['username'];
+    $sql = "SELECT * FROM passengers WHERE passenger_username = '$username'";
+    $result = mysqli_query($conn, $sql);
 
-    try {
-        $stmt = $conn->prepare('SELECT * FROM passengers WHERE passenger_username = :username');
-        $stmt->bindParam(':username', $username);
-
-        $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $user = mysqli_fetch_assoc($result);
 
         $fullName = $user['passenger_fullname'];
         $email = $user['passenger_email'];
         $phoneNumber = $user['passenger_phone'];
-        $memberships = $user['packages_no'];
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        $username = $user['passenger_username'];
+    } else {
+        echo "User not found";
+        exit();
     }
-}
-else{
-    exit(); 
+} else {
+    exit();
 }
 ?>
 
@@ -44,7 +43,8 @@ else{
         body {
             font-family: 'PT Sans', sans-serif;
             background-color: #f7f7f7;
-            font-size: 22px; 
+            font-size: 22px;
+            
         }
 
         .container {

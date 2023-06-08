@@ -40,7 +40,7 @@ if (isset($_POST['signup'])) {
 $checkQuery = "SELECT * FROM passengers WHERE passenger_username = '$username'";
 $result = $conn->query($checkQuery);
 
-if ($result->num_rows > 0) {
+if ($result->num_rows > 0) { 
     // Username already exists, handle the error
     $error = "Username already exists.";
     header("Location: signup.php?error=" . urlencode($error));
@@ -49,6 +49,16 @@ if ($result->num_rows > 0) {
     $sql = "INSERT INTO passengers (passenger_fullname, passenger_username, passenger_email, passenger_password, passenger_phone, passenger_notifications) VALUES ('$fullName', '$username', '$email', '$password', '$phoneno', '$sendNotifications')";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
+
+// retrieve the id of the just inserted user
+    $user_id = mysqli_insert_id($conn);
+
+     // Insert the signup message into the database
+     $message = "created your account successfully"; 
+        
+     $insertSql = "INSERT INTO Notifications (passenger_id, message, Notification_datetime)
+     VALUES ('$user_id', '$message', NOW())";
+     $conn->query($insertSql);
 
     // Check if the insertion was successful
     if ($stmt->affected_rows > 0) {

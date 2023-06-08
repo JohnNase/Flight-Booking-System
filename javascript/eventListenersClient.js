@@ -29,12 +29,12 @@ myFlightsButton.addEventListener('click', function(event) {
   window.location.assign('http://localhost/Flight-Booking-System/HTML/inConstruction.php');
 });
 
-const notificationsButton = document.getElementById('Notifications-btn');
-notificationsButton.addEventListener('click', function(event) {
-  event.preventDefault(); // Prevent the default link behavior
-  // Redirect to the desired page
-  window.location.assign('http://localhost/Flight-Booking-System/HTML/inConstruction.php');
-});
+// const notificationsButton = document.getElementById('Notifications-btn');
+// notificationsButton.addEventListener('click', function(event) {
+//   event.preventDefault(); // Prevent the default link behavior
+//   // Redirect to the desired page
+//   window.location.assign('http://localhost/Flight-Booking-System/HTML/inConstruction.php');
+// });
 
 
 });

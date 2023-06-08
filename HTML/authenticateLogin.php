@@ -22,13 +22,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $conn->real_escape_string($password);
 
     // Query the database
-    $sql = "SELECT passenger_username FROM passengers WHERE passenger_username = '$username' AND passenger_password = '$password'";
+    $sql = "SELECT passenger_username, passenger_id FROM passengers WHERE passenger_username = '$username' AND passenger_password = '$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
         // User authenticated, retrieve the user ID
         $row = $result->fetch_assoc();
-        $user_id = $row['passenger_username'];
+        $user_id = $row['passenger_id'];
+        $user_id = $conn->real_escape_string($user_id);
+
+        // Insert the login message into the database
+        $message = "Logged in successfully"; 
+        
+        $insertSql = "INSERT INTO Notifications (passenger_id, message, Notification_datetime)
+        VALUES ('$user_id', '$message', NOW())";
+        $conn->query($insertSql);
 
         // Set the session and cookie with the user ID
         $_SESSION['username'] = $user_id;

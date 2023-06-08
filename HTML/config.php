@@ -5,11 +5,11 @@ $username = 'root'; // Replace with your database username
 $password = ''; // Replace with your database password
 $database = 'webproject'; // Replace with your database name
 
-// Create a PDO instance for database connection
-try {
-    $conn = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+// Create a MySQLi instance for database connection
+$conn = new mysqli($hostname, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>
