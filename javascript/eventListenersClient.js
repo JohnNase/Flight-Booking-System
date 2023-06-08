@@ -26,15 +26,9 @@ const myFlightsButton = document.getElementById('myFlights-btn');
 myFlightsButton.addEventListener('click', function(event) {
   event.preventDefault(); // Prevent the default link behavior
   // Redirect to the desired page
-  window.location.assign('http://localhost/Flight-Booking-System/HTML/inConstruction.php');
+  window.location.assign('http://localhost/Flight-Booking-System/HTML/myFlights.php');
 });
 
-// const notificationsButton = document.getElementById('Notifications-btn');
-// notificationsButton.addEventListener('click', function(event) {
-//   event.preventDefault(); // Prevent the default link behavior
-//   // Redirect to the desired page
-//   window.location.assign('http://localhost/Flight-Booking-System/HTML/inConstruction.php');
-// });
 
 
 });
