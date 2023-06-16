@@ -88,14 +88,26 @@ if ($result->num_rows > 0) {
   } else {
     echo "No flights found.";
   }
+
 $conn->close();
+
+
+
 ?>
   </div>
   <script>
  function redirectToPayment(ticket_no) {
-  var encodedTicketNo = encodeURIComponent(ticket_no);
+  if (localStorage.getItem('loggedIn') == null || localStorage.getItem('loggedIn')
+  != true){
+    alert("You should be logged-in to perform this action!");
+    var encodedTicketNo = encodeURIComponent(ticket_no);
   window.location.href = "http://localhost/Flight-Booking-System/HTML/payment.php?ticket_no=" + encodedTicketNo;
-}
+    return false;
+    }else{
+      //do nothing and allow the user to go on with their shopping carts
+      };
+  }
+
   </script>
 </body>
 </html>

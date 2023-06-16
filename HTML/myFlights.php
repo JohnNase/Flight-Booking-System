@@ -68,7 +68,7 @@ if ($passengerId) {
                 $imageUrl = "http://localhost/Flight-Booking-System/img/" . strtolower(str_replace(" ", "-", $airline_name)) . "-logo.png";
 
                 // Access ticket details from the $row array
-                $ticketCount = $row['ticket_count'];
+                
                 $ticketType = $row['ticket_type'];
                 $ticketClass = $row['ticket_class'];
                 $ticketPrice = $row['ticket_price'];
@@ -81,14 +81,16 @@ if ($passengerId) {
                 echo "<div class='flight-item'>";
                 echo "<img src='$imageUrl' alt='$airline_name' style='max-width: 100px;margin-right: 20px;'>";
                 echo "<h2>Flight from $departure to $destination</h2>";
-                echo "<p>Tickets: $ticketCount</p>";
+                
                 echo "<p>Type: $ticketType</p>";
                 echo "<p>Class: $ticketClass</p>";
                 echo "<p>Price: $ticketPrice</p>";
                 echo "<div class='airline-logo'></div>";
-                echo "<button class='buy-button' onclick='downloadTicket($passengerId, $ticketNo)'>Download Ticket</button>";
+                echo "<button class='buy-button' onclick=\"downloadTicket('$passengerId', '$ticketNo')\">Download Ticket</button>";
                 echo "</div>";
             }
+           
+
 
         } else {
             echo "No tickets found.";
@@ -102,6 +104,9 @@ if ($passengerId) {
 
 // Close the database connection
 mysqli_close($conn);
+
+     
+
 ?>
 
 
@@ -171,31 +176,16 @@ mysqli_close($conn);
 </head>
 
 </body>
-
 <script>
-function downloadTicket(passengerId, ticketNo) {
-    // Create a form and submit it to download the ticket
-    var form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'downloadTicket.php';
-
-    // Add passenger ID and ticket number as hidden input fields
-    var passengerIdInput = document.createElement('input');
-    passengerIdInput.type = 'hidden';
-    passengerIdInput.name = 'passengerId';
-    passengerIdInput.value = passengerId;
-    form.appendChild(passengerIdInput);
-
-    var ticketNoInput = document.createElement('input');
-    ticketNoInput.type = 'hidden';
-    ticketNoInput.name = 'ticketNo';
-    ticketNoInput.value = ticketNo;
-    form.appendChild(ticketNoInput);
-
-    // Submit the form
-    document.body.appendChild(form);
-    form.submit();
+  function downloadTicket(passengerId, ticketNo) {
+    // Redirect to the ticketPrinted.php page with the necessary parameters
+    var url = '../ticketPrinted.php?passengerId=' + passengerId + '&ticketNo=' + ticketNo;
+    window.location.href = url;
 }
 </script>
+
+
+
+
  
 </html>

@@ -2,15 +2,12 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Perform login authentication here
-    // If the login is successful, set the session and cookie
+  
+    $_SESSION['username'] = $usernamei;  
 
-    $_SESSION['username'] = $usernamei; // Store the user ID in the session
-
-    $expiry = time() + (30 * 24 * 60 * 60); // Set the expiration time to a desired duration (30 days in this example)
-    setcookie('username', $usernamei, $expiry, '/'); // Set the cookie with the user ID
-
-    // Redirect the user to the desired page
+    $expiry = time() + (30 * 24 * 60 * 60);  
+    setcookie('username', $usernamei, $expiry, '/');  
+ 
     header('Location: clientDashboard.php');
     exit;
 }
@@ -20,7 +17,6 @@ if (!isset($_SESSION)) {
 }
 
 if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
-    // Restore the session if the cookie exists and the session does not
     $_SESSION['username'] = $_COOKIE['username'];
 }
 ?>
@@ -129,7 +125,6 @@ if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
 
             </style>
         </body>
-
 
         </html>
     <script>
