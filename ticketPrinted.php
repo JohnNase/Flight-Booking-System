@@ -21,36 +21,47 @@ if (isset($_GET['passengerId']) && isset($_GET['ticketNo'])) {
     echo "Passenger ID or ticket number not provided";
 }
 // Fetch ticket data from the database based on the ticket number
-$sql = "SELECT * FROM Ticket 
-        INNER JOIN Passengers ON Ticket.passenger_id = Passengers.passenger_id
-        INNER JOIN Flight ON Ticket.flight_no = Flight.flight_no
-        WHERE ticket_no = '$ticketNo'";
+$sql = "SELECT
+			p.passenger_fullname, p.passenger_id, 
+			t.ticket_type, t.ticket_class, t.ticket_price, t.ticket_no,
+			f.departure, f.destination,f.flight_no,
+			a.airline_name,s.airport_id, ar.airport_name, ar.airport_city,
+			ar.airport_country, a.airline_no,
+			DATE_FORMAT(flight_date, '%d/%m/%Y') AS departure_date, 
+			DATE_FORMAT(fd.flight_date, '%H:%i') AS departure_time
+            FROM Transactions tr
+            INNER JOIN Ticket t ON tr.ticket_no = t.ticket_no
+            INNER JOIN Flight f ON t.flight_no = f.flight_no
+            INNER JOIN Airline a ON f.airline_no = a.airline_no
+            INNER JOIN serve s ON a.airline_no = s.airline_no
+            INNER JOIN airport ar ON ar.airport_id = s.airport_id
+            INNER JOIN Passengers p ON tr.passenger_id = p.passenger_id
+            INNER JOIN flightdate fd ON f.flight_no = fd.flight_no
+		WHERE tr.passenger_id = $passengerId AND t.ticket_no = '$ticketNo'
+		GROUP BY t.ticket_type, t.ticket_class, t.ticket_price, f.departure,
+			f.destination, a.airline_name, p.passenger_fullname, t.ticket_no";
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $ticket = $result->fetch_assoc();
-    $passengerId = $ticket['passenger_id'];
-    $firstName = $ticket["passenger_fullname"];
-    $lastName = $ticket["passenger_username"];
-    $departureAirportCode = $ticket["departure"];
-    $arrivalAirportCode = $ticket["destination"];
-    $dateOfDeparture = date('d M Y', strtotime($ticket["flight_date"]));
-    $timeOfDeparture = substr(strtoupper($ticket["time_of_departure"]), -5) . 'UTC';
-    $classType = $ticket["ticket_type"];
-    $fareClass = $ticket["ticket_class"];
-    $totalFareAmount = "$" . $ticket["ticket_price"] . ".98";
 
-    // Display the retrieved data
-    echo "Passenger ID: " . $passengerId . "<br>";
-    echo "First Name: " . $firstName . "<br>";
-    echo "Last Name: " . $lastName . "<br>";
-    echo "Departure Airport Code: " . $departureAirportCode . "<br>";
-    echo "Arrival Airport Code: " . $arrivalAirportCode . "<br>";
-    echo "Date of Departure: " . $dateOfDeparture . "<br>";
-    echo "Time of Departure: " . $timeOfDeparture . "<br>";
-    echo "Class Type: " . $classType . "<br>";
-    echo "Fare Class: " . $fareClass . "<br>";
-    echo "Total Fare Amount: " . $totalFareAmount . "<br>";
+	$airlineName = $ticket['airline_name']; 
+	$airlineID = $ticket['airline_no']; 
+	$airportName = $ticket['airport_name']; 
+	$airportID = $ticket['airport_id'];
+	$airportCity = $ticket['airport_city'];
+	$airportCountry = $ticket['airport_country'];
+    $passengerId = $ticket['passenger_id'];
+    $fullName = $ticket["passenger_fullname"]; 
+    $departure = $ticket["departure"];
+    $arrival = $ticket["destination"];
+    $dateOfDeparture = $ticket['departure_date'];
+	$timeOfDeparture = $ticket['departure_time']; 
+    $returnOrOneWay = $ticket["ticket_type"];
+    $ticketClass = $ticket["ticket_class"];
+    $totalFareAmount = "$" . $ticket["ticket_price"] ;
+	$flightID = $ticket['flight_no']; 
 } else {
     echo "Ticket not found";
 }
@@ -66,32 +77,33 @@ if ($result->num_rows > 0) {
 			 
 
 			<img src="https://lukw4l.de/utils/media/assets/flightticket/plane_logo.png">
-			LUKW4L Airlines
+			<?php echo $airlineName;?>
 		</span>
 		<span id="tearoffbanner">
 			<img src="https://lukw4l.de/utils/media/assets/flightticket/plane_logo.png">
-			LUKW4L Airlines
+			<?php echo $airlineName;?>
 		</span>
 	</div>
 	<div id="barcode">
-		XYZASDASDXYZ
+	<?php echo $ticketNo; ?>
 	</div>
 	<div id="data">
 		<div id="maindata">
 			<div class="box">
 				<span class="header">
+				<?php echo $airportName.','.$airportCountry; ?> <br>
 				<?php echo $passengerId; ?>
 				</span>
 				<span class="body">
-				 <?php echo $ticketNo;  ?>
+				 
 				</span>
 			</div>
 			<div class="box">
 				<span class="header">
-					Flight Number
+				<?php echo $ticketNo;  ?>
 				</span>
 				<span class="body">
-					LUKW4L 3345
+				<?php echo substr($airlineName, 0, 4).substr($airportID, -2); ?>
 				</span>
 			</div>
 			<div class="box">
@@ -99,7 +111,7 @@ if ($result->num_rows > 0) {
 					From
 				</span>
 				<span class="body">
-					CGN (Germany)
+				<?php echo $departure; ?>
 				</span>
 			</div>
 			<div class="box">
@@ -107,7 +119,7 @@ if ($result->num_rows > 0) {
 					Date
 				</span>
 				<span class="body">
-					11 AUG 2021
+				<?php echo $dateOfDeparture; ?>
 				</span>
 			</div>
 			<div class="box">
@@ -115,7 +127,7 @@ if ($result->num_rows > 0) {
 					To
 				</span>
 				<span class="body">
-					SYD (Australia)
+				<?php echo $arrival; ?>
 				</span>
 			</div>
 			<div class="box">
@@ -133,7 +145,7 @@ if ($result->num_rows > 0) {
 					Boarding Time
 				</span>
 				<span class="body">
-					12:00
+				<?php echo $timeOfDeparture; ?>
 				</span>
 			</div>
 
@@ -143,7 +155,7 @@ if ($result->num_rows > 0) {
 						Passenger Name
 					</span>
 					<span class="body">
-						Mr. Lorem Ipsum
+					<?php echo $fullName; ?>
 					</span>
 				</div>
 				<div class="box">
@@ -151,7 +163,7 @@ if ($result->num_rows > 0) {
 						Flight Number
 					</span>
 					<span class="body">
-						LUKW4L 3345
+					<?php echo $flightID; ?>
 					</span>
 				</div>
 				<div class="box">
@@ -159,7 +171,7 @@ if ($result->num_rows > 0) {
 						Date
 					</span>
 					<span class="body">
-						11 AUG 2021
+					<?php echo $dateOfDeparture; ?>
 					</span>
 				</div>
 				<div class="box">

@@ -48,7 +48,7 @@ function getPassengerIdByUsername($username) {
 $passengerId = getPassengerIdByUsername($_SESSION['username']);
 
 if ($passengerId) {
-    $sql = "SELECT COUNT(*) AS ticket_count, t.ticket_type, t.ticket_class, t.ticket_price, f.departure, f.destination, a.airline_name, p.passenger_fullname, t.ticket_no
+    $sql = "SELECT t.ticket_type, t.ticket_class, t.ticket_price, f.departure, f.destination, a.airline_name, p.passenger_fullname, t.ticket_no
             FROM Transactions tr
             INNER JOIN Ticket t ON tr.ticket_no = t.ticket_no
             INNER JOIN Flight f ON t.flight_no = f.flight_no
