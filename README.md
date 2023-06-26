@@ -3,6 +3,16 @@
 
 This section provides instructions on the necessary requirements and installation process for using the software.
 
+## Technologies used:
+[![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue)](https://www.php.net/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-blue)](https://www.mysql.com/)
+[![XAMPP](https://img.shields.io/badge/XAMPP-8.0.11-orange)](https://www.apachefriends.org/index.html)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![REST API](https://img.shields.io/badge/REST%20API-Yes-brightgreen)](https://en.wikipedia.org/wiki/Representational_state_transfer)
+[![HTML](https://img.shields.io/badge/HTML-5-orange)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS](https://img.shields.io/badge/CSS-3-blue)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+
 ## Clone the repository
 
 To start, clone the repository by executing the following command in your terminal:
@@ -37,6 +47,8 @@ Your database is all set.
 ## Server setup
 Ensure that you have XAMPP server installed and that MySql and Apache are running. If you don't have XAMPP installed, you can download it for your respective operating system from the following link:
 
+[![XAMPP](https://img.shields.io/badge/XAMPP-8.0.11-orange)](https://www.apachefriends.org/index.html)
+
 [download XAMPP](https://www.apachefriends.org/download.html)
 
 After installing the server, place the folder of the project in the htdocs directory found in XAMPP folder.
@@ -69,5 +81,12 @@ Here is a simple and concise roadmap to use our website:
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
+## Contact us
+
+[![John Nase](https://img.shields.io/badge/Gmail-John%20Nase-red)](mailto:jnase21@epoka.edu.al)
+
+[![Sara Berberi](https://img.shields.io/badge/Gmail-Sara%20Berberi-red)](mailto:sberberi21@epoka.edu.al)
+
+
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the  [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
