@@ -1,5 +1,9 @@
 <?php
 include('navbarClient.php');
+$passengerId = getPassengerIdByUsername($_SESSION['username']);
+
+$downloadUrl = '/ticketPrinted.php?passengerId=' . $passengerId . '&ticketNo=' . $ticketNo;
+$downloadFileName = 'ticketPrinted.jpg';
 ?>
 <html lang="en">
 <head>
@@ -28,7 +32,7 @@ include('navbarClient.php');
                 </div>
                 <div class="modal-body">
                     <p class="text-center">Your transaction was successful. Check your email for details.</p>
-                    <a href="tobedownloaded">Download Ticket</a>
+                    <a href="$downloadUrl" download='$downloadFileName'>Download Ticket</a>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
@@ -36,7 +40,6 @@ include('navbarClient.php');
             </div>
         </div>
     </div>
-
     <script>
         // Open the modal when the page loads
         $(window).on('load', function () {

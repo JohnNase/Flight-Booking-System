@@ -1,11 +1,10 @@
 <?php
 // Database configuration
-$hostname = 'localhost'; // Replace with your database hostname
-$username = 'root'; // Replace with your database username
-$password = ''; // Replace with your database password
-$database = 'webproject'; // Replace with your database name
-
-// Create a MySQLi instance for database connection
+$hostname = 'localhost'; 
+$username = 'root';  
+$password = '';  
+$database = 'webproject';  
+ 
 $conn = new mysqli($hostname, $username, $password, $database);
 
 // Check connection

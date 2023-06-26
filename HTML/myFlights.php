@@ -1,4 +1,7 @@
+
+
 <?php
+
 include('navbarClient.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start(); // Start the session if it's not already started
@@ -84,10 +87,15 @@ if ($passengerId) {
                 echo "<p>Price: $ticketPrice</p>";
                 echo "<div class='airline-logo'></div>";
 
-                $downloadUrl = '../ticketPrinted.php?passengerId=' . $passengerId . '&ticketNo=' . $ticketNo;
-                $downloadFileName = 'ticketPrinted.jpg';
+      
+            
+                
+                $downloadUrl = '..\HTML\src\ticketPrinted.php?passengerId=' . $passengerId . '&ticketNo=' . $ticketNo;
+          
+                $downloadFileName = 'myTicket.html';
 
                 echo "<a class='buy-button' href='$downloadUrl' download='$downloadFileName'>Download Ticket</a>";
+                echo "  "."<a class='buy-button' href='$downloadUrl' target='_blank'>View Ticket</a>";
                 echo "</div>";
             }
         } else {

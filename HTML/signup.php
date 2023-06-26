@@ -147,7 +147,7 @@ include('authenticateSignup.php'); ?>
     <button type="submit" name="signup">Sign Up</button>
   </form>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="ps://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="http://localhost/Flight-Booking-System/javascript/eventListeners.js"></script>  
 
 

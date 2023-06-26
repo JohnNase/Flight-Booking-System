@@ -1,7 +1,9 @@
 
-<?php  
+<?php   
+use Mpdf\Mpdf;
 
-
+include __DIR__ . '/../../vendor/autoload.php';
+ 
 session_start();
 $loggedIn = isset($_SESSION['username']);
 
@@ -9,6 +11,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "webproject";
+
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -18,12 +21,12 @@ if ($conn->connect_error) {
 if (isset($_GET['passengerId']) && isset($_GET['ticketNo'])) {
     $passengerId = $_GET['passengerId'];
     $ticketNo = $_GET['ticketNo'];
-    // Rest of your code
+   
 } else {
-    // Handle the case when the parameters are not provided
+  
     echo "Passenger ID or ticket number not provided";
 }
-// Fetch ticket data from the database based on the ticket number
+ 
 $sql = "SELECT
 			p.passenger_fullname, p.passenger_id, 
 			t.ticket_type, t.ticket_class, t.ticket_price, t.ticket_no,
@@ -68,6 +71,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "Ticket not found";
 }
+
 ?>
 
 <head>
@@ -210,5 +214,114 @@ if ($result->num_rows > 0) {
 		</div>
 	</div>
 </div>
-
  
+<style>
+    #banner {
+        height: 20vw;
+        border-radius: 2vw;
+        border-top: 4vw solid;
+        font-family: "Merienda";
+        color: white;
+    }
+    
+    <?php
+        $bannerColor = '#373334'; // default color
+    
+        switch ($airlineName) {
+            case "WizzAir":
+                $bannerColor = "#ff00b0";
+                break;
+            case "Virgin Atlantic":
+                $bannerColor = "red";
+                break;
+            case "United Airlines":
+                $bannerColor = "blue";
+                break;
+            case "Turkish Airlines":
+                $bannerColor = "red";
+                break;
+            case "Southwest Airlines":
+                $bannerColor = "brown";
+                break;
+            case "Singapore Airlines":
+                $bannerColor = "yellow";
+                break;
+            case "SAS Scandinavian Airlines":
+                $bannerColor = "blue";
+                break;
+            case "Ryanair":
+                $bannerColor = "blue";
+                break;
+            case "Qatar Airways":
+                $bannerColor = "#940021";
+                break;
+            case "Qantas":
+                $bannerColor = "#940000"; 
+                break;
+            case "Norwegian Air Shuttle":
+                $bannerColor = "red";
+                break;
+            case "Lufthansa":
+                $bannerColor = "#033280";
+                break;
+            case "KLM Royal Dutch Airlines":
+                $bannerColor = "blue";
+                break;
+            case "Japan Airlines":
+                $bannerColor = "red";
+                break;
+            case "Hawaiian Airlines":
+                $bannerColor = "purple";
+                break;
+            case "Finnair":
+                $bannerColor = "blue";
+                break;
+            case "Etihad Airways":
+                $bannerColor = "gold";
+                break;
+            case "Emirates":
+                $bannerColor = "green";
+                break;
+            case "EgyptAir":
+                $bannerColor = "red";
+                break;
+            case "Delta Air Lines":
+                $bannerColor = "blue";
+                break;
+            case "China Airlines":
+                $bannerColor = "red";
+                break;
+            case "Cathay Pacific":
+                $bannerColor = "green";
+                break;
+            case "British Airways":
+                $bannerColor = "blue";
+                break;
+            case "American Airlines":
+                $bannerColor = "red";
+                break;
+            case "Alaska Airlines":
+                $bannerColor = "blue";
+                break;
+            case "Air New Zealand":
+                $bannerColor = "black";
+                break;
+            case "Air India":
+                $bannerColor = "orange";
+                break;
+            case "Air France":
+                $bannerColor = "blue";
+                break;
+            case "Air Canada":
+                $bannerColor = "red";
+                break;
+            case "Aeroflot":
+                $bannerColor = "blue";
+                break;
+        }
+    ?>
+    
+    #banner {
+        border-top-color: <?php echo $bannerColor; ?>;
+    }
+</style>
