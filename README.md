@@ -66,7 +66,9 @@ Here is a simple and concise roadmap to use our website:
 ├── Press  'Login' and enter your credentials to login or press 'Signup' and enter your credentials to register. 
 └── After being logged in, you will be redirected to the searchFlights page by default.
      ├── There you can enter data about your flight and check if there is any ticket available. 
-     └── If data is found you can book a flight by clicking 'Buy ticket'. 
+     └── NOTE!- Please choose tickets before '2023-06-02', since that was the last time they  were inserted in the database. There are no tickets after that day.  
+     └── If data is found you can book a flight by clicking 'Buy ticket'.
+     └── Test example: London to New York, economy flight.  
         ├── Card credentials should have only character '1' repeated or not, or else the payment will fail.
         └── The name of the person should always be entered.
 └── Press 'My Profile' to view your profile and press 'Edit Profile' to edit your profile. 
