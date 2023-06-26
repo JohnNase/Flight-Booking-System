@@ -62,7 +62,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         border-top: 1px solid #ddd;
       }
       .notification-drop .item ul li {
-        font-size: 16px;
+        font-size: 13px;
         padding: 15px 0 15px 25px;
       }
       .notification-drop .item ul li:hover {
@@ -130,18 +130,55 @@ while ($row = mysqli_fetch_assoc($result)) {
       }
       
       .notification-text{
-        font-size: 14px;
+        font-size: 12px;
         font-weight: bold;
       }
       
       .notification-text span{
         float: right;
       }
+
+      /* how to add color to the scrollbar */
+.notification-drop .item ul::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+    }
+/* Track */
+.notification-drop .item ul::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+    }
+  
+/* Handle */
+.notification-drop .item ul::-webkit-scrollbar-thumb
+{
+    background: greenyellow;
+    border-radius: 10px;
+    }
+
+/* Handle on hover */
+.notification-drop .item ul::-webkit-scrollbar
+:hover {
+    background: greenyellow;
+    
+    }
+
+      .notification-drop .item ul {
+    max-height: 400px; 
+    overflow-y: auto;
+
+  }
+
 </style>
+
+
 <ul class="notification-drop">
-    <li class="item">
-      <i class="fa fa-bell-o notification-bell" aria-hidden="true"></i> <span class="btn__badge pulse-button "><?php echo $NUMBER; ?></span>     
-      <ul>
+    <li class="item" >
+      <i class="fa fa-bell-o notification-bell" aria-hidden="true">
+      <link href="https://fonts.googleapis.com/css?family=Schoolbell&v1" rel="stylesheet">
+      </i> 
+      <span class="btn__badge pulse-button "><?php echo $NUMBER; ?></span>     
+      <ul style=" border-radius: 10px;box-shadow: 0 7px 9px grey; ">
         <!-- The fetched notifications will be dynamically added here -->
       </ul>
     </li>

@@ -1,4 +1,7 @@
 <?php
+ 
+include('navbar.php'); 
+
 
 // Sample database connection
 $servername = "localhost";
@@ -31,123 +34,169 @@ if ($result->num_rows > 0) {
 // Close the database connection
 $conn->close();
 ?>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+body {
+  font-family:'Roboto', Helvetica, Arial, sans-serif;
+  font-weight:300;
+  background:transparent;
+}
+h3 {
+  font-size: 1.3em;
+  margin:0;
+}
+p{
+  font-size:0.9em;
 }
 
-header {
-  background-color: #f2f2f2;
-  padding: 20px;
+/* Hover Card 
+.......................................................................*/
+div.catCard {
+  border: solid 5px #e9e9e9;
+  background: #d8d8d8;
+  width: 221px;
+  height: 400px;
+  display: block;
+  position: relative;
+  overflow: hidden;
 }
-
-main {
-  padding: 20px;
-}
-
-footer {
-  background-color: #f2f2f2;
-  padding: 10px;
-  text-align: center;
-}
-
-#new-arrivals {
-  padding: 40px 0;
-}
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.membership-card {
-  background-color: #f9f9f9;
-  border-radius: 4px;
-  padding: 20px;
-  width: 300px;
-  margin-bottom: 40px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.membership-card:hover {
-  transform: translateY(-5px);
-}
-
-.membership-image {
-  width: 100%;
+div.lowerCatCard {
+  position: absolute; 
+  background: #e9e9e9;
+  padding: 5px 5px; 
   height: 200px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 4px;
-  margin-bottom: 20px;
+  -webkit-transition: all 0.6s ease;
+  -moz-transition:    all 0.6s ease;
+  -o-transition:      all 0.6s ease;
+  transition:         all 0.6s ease;
 }
-
-.membership-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
+div.lowerCatCard:hover {
+  opacity: 0.95;
+  bottom: 0;
+  height: 390px;
 }
-
-.membership-price {
+div.catCard  div.lowerCatCard { 
+  left: 0; 
+  bottom: -3%;
+  width: 215px;
+}
+div.catCard:hover div.lowerCatCard { 
+  bottom: 0;
+}
+li.catCardList {
+  width:225px;
+  display: inline-block;
+  margin-right: 19px;
+  margin-top: 25px;
+}
+li.catCardList-last {
+  margin-right: 0;
+  width:225px;
+  display: inline-block;
+}
+ul.catCardList {
+  margin: 0;
+}
+#catCardButton {
+  position: absolute;
+  width: 190px;
+  bottom: 5px;
+  -webkit-transition: all 0.6s ease;
+  -moz-transition:    all 0.6s ease;
+  -o-transition:      all 0.6s ease;
+}
+div.lowerCatCard:hover #catCardButton {
+  bottom: 5px;
+}
+.startingPrice span {
   font-size: 16px;
-  color: #666;
+  color: #c90c12;
+  font-weight: 300;
 }
+div.startingPrice {
+  margin-bottom: 5px;
+  color: #000;
+  font-weight: 300;
+}
+.catCard img {
+  border: 1px solid #dddddd;
+  width: 219px;
+  height: 198px;
+}
+.catCard img:hover {
+  border: 1px solid #bababa;
+}
+
+/* Button 
+.......................................................................*/
+.button {
+  cursor: pointer;
+  font-size: 14px !important;
+  color: #ffffff;
+  padding: 7px 10px !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0 !important;
+  background: #000;
+  border: none;
+  border-bottom: solid 1px #c90c12;
+  text-align: center;
+  margin-top: 10px;
+}
+.button:hover {
+  background-color: #c90c12;
+  border: none;
+  border-bottom: solid 1px #000;
+  box-shadow: 0 2px 3px #a8a8a8;
+  transform: scale(1.04);
+  -webkit-transform: scale(1.04);
+  -moz-transform: scale(1.04);
+  -o-transform: scale(1.04);
+  -ms-transform: scale(1.04);
+}
+.button:active {
+  background: #000;
+}
+.button a {
+  color: #ffffff;
+  padding: 7px 30px !important;
+  text-decoration: none;
+}
+.button a:hover {
+  color: #ffffff;
+}
+.button:hover {
+	color: #fff;
+}
+
 
 </style>
-</head>
-<body>
-<?php
-include('navbar.php'); 
-?>
-  <header>
-    <h1>Airline Ticket Memberships</h1>
-  </header>
 
-  <main>
-    <section id="new-arrivals">
-      <div class="container">
-        <?php  
+<ul class="catCardList">
+<?php  
         // Generate the membership cards dynamically
         foreach ($memberships as $membership) {
           $name = $membership['packages_name'];
           $price = $membership['packages_price'];
-          $imageUrl = "http://localhost/Flight-Booking-System/img/" . strtolower(str_replace(" ", "-", $name)) . ".png";
+          $imageUrl = "http://localhost/Flight-Booking-System/img/Membership.png";
           $membershipUrl = "http://localhost/Flight-Booking-System/HTML/memberships/" . strtolower(str_replace(" ", "-", $name)) . ".php";
         ?>
-           <div class="membership-card" data-membership-url="<?php echo $membershipUrl; ?>">
-            <div class="membership-image" style="background-image: url('<?php echo $imageUrl; ?>');"></div>
-            <h2 class="membership-name"><?php echo $name; ?></h2>
-            <p class="membership-price">$<?php echo $price; ?></p>
-          </div>
-        <?php
+    <li class="catCardList">
+    <div class="catCard"><a href="#" ><img style="background-image: url('<?php echo $imageUrl; ?>');  background-size: 200px 220px; "></a>
+    <div class="lowerCatCard">
+    <h3><?php echo $name; ?></h3>
+    <div class="startingPrice">Prices Starting At <span><?php echo $price; ?> ALL</span></div>
+    <p>Unlock Exclusive Benefits with Our Airline Membership!
+
+Experience priority boarding, luxurious airport lounges, extra legroom, and enhanced in-flight amenities. Enjoy special offers, discounts, and upgrades. Join today and elevate your travel experience</p>
+  
+  
+    <div id="catCardButton" class="button"><a href="../HTML/comingSoon.php">View Product</a></div>
+    </div>
+    </div>
+    </li> 
+    <?php
         }
         ?>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2023 Fly Easy Company. All rights reserved.</p>
-  </footer>
-  <script>
-    // Add event listeners to membership cards
-    var membershipCards = document.querySelectorAll('.membership-card');
-    membershipCards.forEach(function(card) {
-      card.addEventListener('click', function() {
-        var membershipUrl = card.getAttribute('data-membership-url');
-        window.location.href = membershipUrl;
-      });
-    });
-  </script>
-</body>
-</html>
+    
