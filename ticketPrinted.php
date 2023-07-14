@@ -2,7 +2,7 @@
 <?php   
 use Mpdf\Mpdf;
 
-include __DIR__ . '/../../vendor/autoload.php';
+// include __DIR__ . '/../../vendor/autoload.php';
  
 session_start();
 $loggedIn = isset($_SESSION['username']);

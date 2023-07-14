@@ -88,11 +88,10 @@ if ($passengerId) {
                 echo "<div class='airline-logo'></div>";
 
       
-            
                 
-                $downloadUrl = '..\HTML\src\ticketPrinted.php?passengerId=' . $passengerId . '&ticketNo=' . $ticketNo;
+                $downloadUrl = '../ticketPrinted.php?passengerId=' . $passengerId . '&ticketNo=' . $ticketNo;
           
-                $downloadFileName = 'myTicket.html';
+                $downloadFileName = 'myTicket.html'; 
 
                 echo "<a class='buy-button' href='$downloadUrl' download='$downloadFileName'>Download Ticket</a>";
                 echo "  "."<a class='buy-button' href='$downloadUrl' target='_blank'>View Ticket</a>";
